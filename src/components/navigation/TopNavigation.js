@@ -6,12 +6,17 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
 
 const TopNavigation = ({ isAuthenticated, logout }) => (
-	<Menu>
-		<Menu.Item>
-			<NavLink to="/">TelcoTechnician</NavLink>
+	<Menu pointing secondary>
+		<Menu.Item as={NavLink} exact to="/">
+			TelcoTechnician
 		</Menu.Item>
-		<Menu.Item>
-			<NavLink to="/book/quote">Quick Quote</NavLink>
+		{isAuthenticated && (
+			<Menu.Item as={NavLink} exact to="/dashboard">
+				Dashboard
+			</Menu.Item>
+		)}
+		<Menu.Item as={NavLink} exact to="/quote">
+			Quick Quote
 		</Menu.Item>
 		<Dropdown text="Services" pointing className="link item">
 			<Dropdown.Menu>
@@ -22,19 +27,17 @@ const TopNavigation = ({ isAuthenticated, logout }) => (
 
 		{isAuthenticated ? (
 			<Menu.Menu position="right">
-				<Menu.Item>
-					<a href="" onClick={() => logout()}>
-						Logout
-					</a>
+				<Menu.Item as={NavLink} exact to="/" onClick={() => logout()}>
+					Logout
 				</Menu.Item>
 			</Menu.Menu>
 		) : (
 			<Menu.Menu position="right">
-				<Menu.Item>
-					<NavLink to="/login">Login</NavLink>
+				<Menu.Item as={NavLink} exact to="/login">
+					Login
 				</Menu.Item>
-				<Menu.Item>
-					<NavLink to="/signup">Signup</NavLink>
+				<Menu.Item as={NavLink} exact to="/signup">
+					Signup
 				</Menu.Item>
 			</Menu.Menu>
 		)}

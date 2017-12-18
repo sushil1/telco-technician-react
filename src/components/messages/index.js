@@ -1,4 +1,4 @@
 import InlineError from './InlineError';
+import ConfirmEmailMessage from './ConfirmEmailMessage';
 
-export { InlineError };
-
+export { InlineError, ConfirmEmailMessage };
