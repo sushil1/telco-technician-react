@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+
 import { HomePage, LoginPage, SignupPage, QuotePage } from './components/pages';
 import { TopNavigation } from './components/navigation';
 

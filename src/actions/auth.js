@@ -4,8 +4,14 @@ import api from '../api';
 export const userLoggedIn = user => ({ type: USER_LOGGED_IN, user });
 
 export const login = credentials => dispatch =>
-	api.user.login(credentials).then(user => dispatch(userLoggedIn(user)));
+	api.user.login(credentials).then(user => {
+		localStorage.telcoTechnicianJWT = user.token;
+		dispatch(userLoggedIn(user));
+	});
 
 export const userLoggedOut = () => ({ type: USER_LOGGED_OUT });
 
-export const logout = () => dispatch => dispatch(userLoggedOut());
+export const logout = () => dispatch => {
+	localStorage.removeItem('telcoTechnicianJWT');
+	dispatch(userLoggedOut());
+};

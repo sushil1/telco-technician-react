@@ -1,8 +1,11 @@
 import React from 'react';
 import { Menu, Dropdown } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as actions from '../../actions/auth';
 
-const TopNavigation = () => (
+const TopNavigation = ({ isAuthenticated, logout }) => (
 	<Menu>
 		<Menu.Item>
 			<NavLink to="/">TelcoTechnician</NavLink>
@@ -16,15 +19,37 @@ const TopNavigation = () => (
 				<Dropdown.Item>MDF jumpering</Dropdown.Item>
 			</Dropdown.Menu>
 		</Dropdown>
-		<Menu.Menu position="right">
-			<Menu.Item>
-				<NavLink to="/login">Login</NavLink>
-			</Menu.Item>
-			<Menu.Item>
-				<NavLink to="/signup">Signup</NavLink>
-			</Menu.Item>
-		</Menu.Menu>
+
+		{isAuthenticated ? (
+			<Menu.Menu position="right">
+				<Menu.Item>
+					<a href="" onClick={() => logout()}>
+						Logout
+					</a>
+				</Menu.Item>
+			</Menu.Menu>
+		) : (
+			<Menu.Menu position="right">
+				<Menu.Item>
+					<NavLink to="/login">Login</NavLink>
+				</Menu.Item>
+				<Menu.Item>
+					<NavLink to="/signup">Signup</NavLink>
+				</Menu.Item>
+			</Menu.Menu>
+		)}
 	</Menu>
 );
 
-export default TopNavigation;
+function stateToProps(state) {
+	return {
+		isAuthenticated: !!state.user.token
+	};
+}
+
+TopNavigation.propTypes = {
+	isAuthenticated: PropTypes.bool.isRequired,
+	logout: PropTypes.func.isRequired
+};
+
+export default connect(stateToProps, { logout: actions.logout })(TopNavigation);
