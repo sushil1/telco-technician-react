@@ -10,8 +10,12 @@ class SignupPage extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<SignupForm submit={this.submit} />
+			<div className="ui grid">
+				<div className="twelve wide column centered">
+					<div className="ui segment">
+						<SignupForm submit={this.submit} />
+					</div>
+				</div>
 			</div>
 		);
 	}

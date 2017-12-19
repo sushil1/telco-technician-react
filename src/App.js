@@ -8,7 +8,8 @@ import {
 	LoginPage,
 	SignupPage,
 	QuotePage,
-	DashboardPage
+	DashboardPage,
+	ConfirmationPage
 } from './components/pages';
 import { TopNavigation } from './components/navigation';
 
@@ -17,6 +18,12 @@ const App = ({ location }) => (
 		<TopNavigation location={location} />
 		<Route path="/" exact component={HomePage} location={location} />
 		<Route path="/quote" exact component={QuotePage} location={location} />
+		<Route
+			location={location}
+			path="/confirmation/:token"
+			exact
+			component={ConfirmationPage}
+		/>
 
 		<UserRoute
 			path="/dashboard"
