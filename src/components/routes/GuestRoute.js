@@ -18,8 +18,9 @@ GuestRoute.propTypes = {
 };
 
 function stateToProps(state) {
+	const currentUser = state.user.currentUser;
 	return {
-		isAuthenticated: !!state.user.token
+		isAuthenticated: !!currentUser.token
 	};
 }
 

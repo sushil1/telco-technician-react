@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LoginForm } from '../forms';
 import { login } from '../../actions/auth';
+import { Grid, Segment, Divider } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 class LoginPage extends React.Component {
 	submit = data =>
@@ -10,13 +12,21 @@ class LoginPage extends React.Component {
 
 	render() {
 		return (
-			<div className="ui grid">
-				<div className="twelve wide column centered">
-					<div className="ui segment">
+			<Grid.Row centered>
+				<Grid.Column mobile={14} computer={8} tablet={10}>
+					<Segment raised color="teal">
+						<h4>Login Form</h4>
+
+						<Divider />
 						<LoginForm submit={this.submit} />
-					</div>
-				</div>
-			</div>
+						<Segment inverted>
+							<Link to="/forgot_password">Forgot Password?</Link>{' '}
+							<span>New to Telco Technician!</span>{' '}
+							<Link to="/signup">Sign Up</Link>
+						</Segment>
+					</Segment>
+				</Grid.Column>
+			</Grid.Row>
 		);
 	}
 }

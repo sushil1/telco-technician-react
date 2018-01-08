@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import { createStore, applyMiddleware } from 'redux';
+import setAuthorizationHeader from './utils/setAuthorizationHeader';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -25,9 +26,15 @@ if (localStorage.telcoTechnicianJWT) {
 	const user = {
 		email: payload.email,
 		confirmed: payload.confirmed,
-		token: localStorage.telcoTechnicianJWT
+		token: localStorage.telcoTechnicianJWT,
+		role: payload.role
 	};
+
+	setAuthorizationHeader(localStorage.telcoTechnicianJWT);
+
 	store.dispatch(userLoggedIn(user));
+} else {
+	setAuthorizationHeader(null);
 }
 
 ReactDOM.render(

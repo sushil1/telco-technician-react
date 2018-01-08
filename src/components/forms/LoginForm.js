@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Message } from 'semantic-ui-react';
+import { Form, Message, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import isEmail from 'validator/lib/isEmail';
 import { InlineError } from '../messages';
@@ -43,47 +43,49 @@ class LoginForm extends Component {
 	render() {
 		const { data, errors, loading } = this.state;
 		return (
-			<Form onSubmit={this.onSubmit} loading={loading}>
-				{errors.global && (
-					<Message negative>
-						<Message.Header>Something went wrong!</Message.Header>
-						<p>{errors.global}</p>
-					</Message>
-				)}
-				<Form.Field error={!!errors.email}>
-					<label htmlFor="email">Email</label>
-					<input
-						name="email"
-						type="text"
-						placeholder="Enter your email"
-						value={data.email}
-						onChange={this.onChange}
-					/>
+			<Segment>
+				<Form onSubmit={this.onSubmit} loading={loading}>
+					{!!errors.global && (
+						<Message negative>
+							<Message.Header>Something went wrong!</Message.Header>
+							<p>{errors.global}</p>
+						</Message>
+					)}
+					<Form.Field error={!!errors.email}>
+						<label htmlFor="email">Email</label>
+						<input
+							name="email"
+							type="text"
+							placeholder="Enter your email"
+							value={data.email}
+							onChange={this.onChange}
+						/>
 
-					{errors.email && <InlineError text={errors.email} />}
-				</Form.Field>
+						{errors.email && <InlineError text={errors.email} />}
+					</Form.Field>
 
-				<Form.Field error={!!errors.password}>
-					<label htmlFor="password">Password</label>
-					<input
-						name="password"
-						type="password"
-						placeholder="Enter your password"
-						value={data.password}
-						onChange={this.onChange}
-					/>
+					<Form.Field error={!!errors.password}>
+						<label htmlFor="password">Password</label>
+						<input
+							name="password"
+							type="password"
+							placeholder="Enter your password"
+							value={data.password}
+							onChange={this.onChange}
+						/>
 
-					{errors.password && <InlineError text={errors.password} />}
-				</Form.Field>
+						{errors.password && <InlineError text={errors.password} />}
+					</Form.Field>
 
-				<div className="ui fluid buttons">
-					<button type="submit" className="ui primary button">
-						Login
-					</button>
-					<div className="or" />
-					<a className="ui button">Cancel</a>
-				</div>
-			</Form>
+					<div className="ui fluid buttons">
+						<button type="submit" className="ui teal button">
+							Login
+						</button>
+						<div className="or" />
+						<a className="ui button">Cancel</a>
+					</div>
+				</Form>
+			</Segment>
 		);
 	}
 }

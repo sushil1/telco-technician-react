@@ -7,7 +7,7 @@ const UserRoute = ({ component: Component, isAuthenticated, ...rest }) => (
 	<Route
 		{...rest}
 		render={props =>
-			isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
+			isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
 		}
 	/>
 );
@@ -18,8 +18,9 @@ UserRoute.propTypes = {
 };
 
 function stateToProps(state) {
+	const currentUser = state.user.currentUser;
 	return {
-		isAuthenticated: !!state.user.token
+		isAuthenticated: !!currentUser.token
 	};
 }
 
