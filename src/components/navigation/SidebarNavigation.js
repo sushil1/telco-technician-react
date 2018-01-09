@@ -111,10 +111,5 @@ class SidebarNavigation extends Component {
 	}
 }
 
-function stateToProps(state) {
-	return {
-		isAuthenticated: !!state.user.currentUser.token
-	};
-}
 
-export default connect(stateToProps, { logout })(SidebarNavigation);
+export default connect(null, { logout })(SidebarNavigation);

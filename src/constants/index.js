@@ -2,6 +2,7 @@
 
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
+export const CURRENT_USER_FETCHED = 'CURRENT_USER_FETCHED';
 
 //services
 
@@ -33,4 +34,3 @@ export const TICKET_DELETED = 'TICKET_DELETED';
 export const USERS_FETCHED = 'USERS_FETCHED';
 export const USER_UPDATED = 'USER_UPDATED';
 export const USER_DELETED = 'USER_DELETED';
-

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Header, Divider, Icon, Grid, List, Button } from 'semantic-ui-react';
+import { Header, Divider, Icon, Grid, List, Button, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const ServiceDetail = ({ service }) => (
+	<Grid.Row>
 	<Grid.Column mobile={16} tablet={8} computer={8}>
 		<Header as="h2">
 			<Header.Content>{service.name}</Header.Content>
@@ -67,6 +68,11 @@ const ServiceDetail = ({ service }) => (
 		<Header sub>Our stats</Header>
 		<Divider />
 	</Grid.Column>
+	<Grid.Column mobile={16} tablet={8} computer={8}>
+		<Image src="https://mrtelco.com/images/content/16/mdf-jumpering.svg" />
+
+	</Grid.Column>
+	</Grid.Row>
 );
 
 export default ServiceDetail;

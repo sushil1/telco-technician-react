@@ -3,7 +3,9 @@ import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { UserRoute, GuestRoute } from './components/routes';
 import { Grid, Button } from 'semantic-ui-react';
-
+import {connect} from 'react-redux'
+import {fetchCurrentUser} from './actions/users'
+import Loader from 'react-loader'
 import {
 	HomePage,
 	LoginPage,
@@ -25,11 +27,18 @@ import {
 } from './components/navigation';
 
 class App extends React.Component {
+
+	componentDidMount(){
+		if(this.props.isAuthenticated)this.props.fetchCurrentUser()
+	}
+
+
 	render() {
-		const { location } = this.props;
+		const { location, isAuthenticated, loaded } = this.props;
 
 		return (
 			<div>
+				<Loader loaded={loaded}>
 				<Button
 					inverted
 					circular
@@ -52,31 +61,22 @@ class App extends React.Component {
 					<Grid>
 						<Grid.Row only="tablet" style={{ paddingBottom: '0' }}>
 							<Grid.Column width={16}>
-								<SidebarNavigation location={location} />
+								<SidebarNavigation isAuthenticated={isAuthenticated} location={location} />
 							</Grid.Column>
 						</Grid.Row>
 
 						<Grid.Row only="computer" style={{ paddingBottom: '0' }}>
 							<Grid.Column width={16}>
-								<TopNavigation location={location} />
+								<TopNavigation location={location} isAuthenticated={isAuthenticated}/>
 							</Grid.Column>
 						</Grid.Row>
 
 						<Grid.Row only="mobile" style={{ paddingBottom: '0' }}>
 							<Grid.Column width={16}>
-								<SidebarNavigation location={location} />
+								<SidebarNavigation location={location} isAuthenticated={isAuthenticated}/>
 							</Grid.Column>
 						</Grid.Row>
-						<Grid.Row style={{ paddingBottom: '0', paddingTop: '0' }}>
-							<div
-								className="ui teal top attached progress active"
-								data-percent="8">
-								<div
-									className="bar"
-									style={{ transitionDuration: '300ms', width: '55%' }}
-								/>
-							</div>
-						</Grid.Row>
+
 
 						<Route path="/" exact component={HomePage} location={location} />
 
@@ -90,15 +90,21 @@ class App extends React.Component {
 						<Route
 							path="/book"
 							exact
+
 							component={ServiceBookingPage}
 							location={location}
 						/>
+
 						<Route
+							exact
 							path={`/book/:_id`}
 							render={props => (
 								<ServiceBookingPage {...props} location={location} />
 							)}
 						/>
+
+
+
 
 						<Route
 							location={location}
@@ -159,6 +165,7 @@ class App extends React.Component {
 				</div>
 
 				<Footer />
+				</Loader>
 			</div>
 		);
 	}
@@ -170,4 +177,12 @@ App.propTypes = {
 	}).isRequired
 };
 
-export default App;
+function stateToProps(state){
+	const currentUser = state.user.currentUser? state.user.currentUser.email : false
+	return{
+		isAuthenticated: !!currentUser,
+		loaded:state.user.loaded
+	}
+}
+
+export default connect(stateToProps, {fetchCurrentUser})(App);

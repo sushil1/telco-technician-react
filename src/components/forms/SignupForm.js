@@ -33,6 +33,7 @@ class SignupForm extends Component {
 		}
 	};
 
+
 	validate = data => {
 		const errors = {};
 		if (!data.email) errors.email = "Can't be blank";
@@ -59,11 +60,13 @@ class SignupForm extends Component {
 					<Form.Field error={!!errors.email}>
 						<label htmlFor="email">Email</label>
 						<input
-							name="email"
+							name="type"
 							type="text"
+
 							placeholder="Enter your email"
 							value={data.email}
 							onChange={this.onChange}
+
 						/>
 
 						{errors.email && <InlineError text={errors.email} />}

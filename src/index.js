@@ -7,8 +7,7 @@ import setAuthorizationHeader from './utils/setAuthorizationHeader';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import decode from 'jwt-decode';
-import { userLoggedIn } from './actions/auth';
+import { currentUserFetched, fetchCurrentUser } from './actions/users';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './rootReducer';
@@ -21,19 +20,10 @@ const store = createStore(
 //todo decode email from local storage
 
 if (localStorage.telcoTechnicianJWT) {
-	const payload = decode(localStorage.telcoTechnicianJWT);
-
-	const user = {
-		email: payload.email,
-		confirmed: payload.confirmed,
-		token: localStorage.telcoTechnicianJWT,
-		role: payload.role
-	};
-
 	setAuthorizationHeader(localStorage.telcoTechnicianJWT);
-
-	store.dispatch(userLoggedIn(user));
+	store.dispatch(fetchCurrentUser());
 } else {
+	store.dispatch(currentUserFetched({}))
 	setAuthorizationHeader(null);
 }
 

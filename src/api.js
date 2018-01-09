@@ -28,6 +28,8 @@ export default {
 			}),
 		fetchById: id => axios.get(`/api/users/${id}`).then(res => res.data.user),
 
+		fetchCurrentUser: () => axios.get('/api/users/current_user').then(res => res.data.user),
+
 		update: (id, data) =>
 			axios.patch(`/api/users/${id}`, { data }).then(res => res.data.user),
 		delete: id => axios.delete(`/api/users/${id}`).then(res => res.data.id)
@@ -77,6 +79,8 @@ export default {
 			.then(res => res.data.ticket),
 			declineTicket: (ticketId) => axios.patch(`/api/tickets/decline/${ticketId}`)
 			.then(res => res.data.ticket),
+			trackBooking: params =>
+			axios.get(`/api/tickets/tracker`, {params}).then(res => res.data.ticket),
 
 		delete: id => axios.delete(`/api/tickets/${id}`).then(res => res.data.id)
 	},

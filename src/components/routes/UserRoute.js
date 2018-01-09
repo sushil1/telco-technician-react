@@ -20,7 +20,7 @@ UserRoute.propTypes = {
 function stateToProps(state) {
 	const currentUser = state.user.currentUser;
 	return {
-		isAuthenticated: !!currentUser.token
+		isAuthenticated: !!currentUser.email
 	};
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Image, Header, Button } from 'semantic-ui-react';
-
+import {myImage} from '../../images/telecom.png'
 const HomePage = () => (
 	<Grid
 		stretched
@@ -101,26 +101,7 @@ const HomePage = () => (
 			</Grid.Column>
 		</Grid.Row>
 		<Grid.Row>
-			<Grid.Column width={4}>
-				<Image src={''} />Image 1
-			</Grid.Column>
-			<Grid.Column width={6}>
-				<Image src={''} />Image 2
-			</Grid.Column>
-			<Grid.Column width={4}>
-				<Image src={''} />Image 3
-			</Grid.Column>
-		</Grid.Row>
-		<Grid.Row>
-			<Grid.Column width={6}>
-				<Image src={''} />Image 4
-			</Grid.Column>
-			<Grid.Column width={4}>
-				<Image src={''} />Image 5
-			</Grid.Column>
-			<Grid.Column width={6}>
-				<Image src={''} />Image 6
-			</Grid.Column>
+			<Image style={{minHeight:'200px', minWidth:'200px'}} src={myImage} />
 		</Grid.Row>
 	</Grid>
 );

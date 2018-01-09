@@ -12,7 +12,7 @@ const initialData = {
 	email: '',
 	mobile: '',
 	address: '',
-	service: '',
+	service: null,
 	date: null,
 	message: ''
 };
@@ -24,12 +24,12 @@ class ServiceForm extends Component {
 		errors: {}
 	};
 
-	componentDidMount() {
-		this.props.serviceId &&
-			this.setState({
-				data: { ...this.state.data, service: this.props.serviceId }
-			});
-	}
+	// componentDidMount() {
+	// 	this.props.serviceId &&
+	// 		this.setState({
+	// 			data: { ...this.state.data, service: this.props.serviceId }
+	// 		})
+	// }
 
 	handleDateChange = date =>
 		this.setState({
@@ -89,7 +89,9 @@ class ServiceForm extends Component {
 	};
 
 	render() {
+		console.log(this.state.data.service)
 		const { data, errors, loading } = this.state;
+		const defaultService = this.props.serviceId
 		const serviceOptions = this.props.serviceOptions;
 		return (
 			<Segment>
@@ -165,7 +167,7 @@ class ServiceForm extends Component {
 								search
 								selection
 								defaultValue={
-									this.props.serviceId ? this.props.serviceId : null
+									defaultService
 								}
 								options={serviceOptions}
 								onChange={this.handleOptionsChange}

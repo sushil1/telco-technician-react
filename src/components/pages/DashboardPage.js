@@ -11,8 +11,9 @@ import {
 	MyTicketList,
 	UserList
 } from '../lists';
+import {ProfilePage} from '../pages'
 import { fetchAll } from '../../actions/services';
-import { AdminRoute, TechnicanRoute } from '../routes';
+import { AdminRoute, TechnicanRoute, UserRoute } from '../routes';
 
 class DashboardPage extends React.Component {
 	componentDidMount() {
@@ -76,6 +77,9 @@ class DashboardPage extends React.Component {
 									Users
 									<Icon name="users" />
 								</Menu.Item>
+								<Menu.Item as={NavLink} exact to="/dashboard/me">
+									Profile
+								</Menu.Item>
 							</Menu>
 						)}
 					</Grid.Column>
@@ -111,6 +115,12 @@ class DashboardPage extends React.Component {
 							location={this.props.location}
 							serviceOptions={this.props.serviceOptions}
 						/>
+						<UserRoute
+							path="/dashboard/me"
+							component={ProfilePage}
+							location={this.props.location}
+						/>
+
 					</Grid.Column>
 				</Grid.Row>
 			</Grid>

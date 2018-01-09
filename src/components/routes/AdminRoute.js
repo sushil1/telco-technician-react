@@ -18,7 +18,7 @@ const AdminRoute = ({ component: Component, isAdmin, ...rest }) => (
 
 AdminRoute.propTypes = {
 	component: PropTypes.func.isRequired,
-	isAdmin: PropTypes.bool.isRequired
+	isAdmin: PropTypes.bool.isRequired	
 };
 
 function stateToProps(state) {

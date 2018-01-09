@@ -18,15 +18,9 @@ import { Link } from 'react-router-dom';
 class ServiceBookingPage extends React.Component {
 	state = {
 		showSucessMessage: false,
-		serviceId: null
 	};
 
 	componentDidMount() {
-		if (this.props.match.params._id) {
-			this.setState({
-				serviceId: this.props.match.params._id
-			});
-		}
 		Object.keys(this.props.serviceOptions.length === 0) &&
 			this.props.fetchAll();
 	}
@@ -43,6 +37,7 @@ class ServiceBookingPage extends React.Component {
 
 	render() {
 		const { showSucessMessage, serviceId } = this.state;
+		console.log("service ", serviceId)
 
 		const messageComponent = (
 			<Message success icon floating>
@@ -69,7 +64,7 @@ class ServiceBookingPage extends React.Component {
 							<ServiceForm
 								submit={this.submit}
 								serviceOptions={this.props.serviceOptions}
-								serviceId={serviceId}
+								serviceId={this.props.match.params._id}
 								handleDismiss={this.handleDismiss}
 							/>
 							<Segment inverted>

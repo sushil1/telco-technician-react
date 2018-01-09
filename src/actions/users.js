@@ -1,5 +1,5 @@
 import { userLoggedIn } from './auth';
-import { USERS_FETCHED, USER_UPDATED, USER_DELETED } from '../constants';
+import { USERS_FETCHED, USER_UPDATED, USER_DELETED, CURRENT_USER_FETCHED } from '../constants';
 import api from '../api';
 
 export const signup = data => dispatch =>
@@ -33,3 +33,16 @@ export const userDeleted = id => ({
 	type: USER_DELETED,
 	id
 });
+
+export const currentUserFetched = user => ({
+	type:CURRENT_USER_FETCHED,
+	user
+
+})
+
+export const fetchCurrentUser = () => (dispatch) =>
+	api.user.fetchCurrentUser()
+	.then(user => {
+		console.log(user);
+		dispatch(currentUserFetched(user))
+	})

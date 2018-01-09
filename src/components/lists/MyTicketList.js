@@ -9,7 +9,7 @@ import {
 	Icon,
 	Accordion,
 	Popup,
-	Loader
+	Loader, Image
 } from 'semantic-ui-react';
 import { CreateTicketPage } from '../pages';
 import {
@@ -114,12 +114,21 @@ class MyTicketList extends React.Component {
 				</Segment>
 
 				<Segment raised color="teal" loading={loading} centered>
-					<Card.Group stackable>
+
+					<Card.Group stackable style={{marginTop:'20px'}}>
 						{tickets.map((ticket, i) => (
-							<Card key={ticket._id} color="brown">
+							<Card key={ticket._id} color="brown" centered>
 								<Card.Content>
-									<Card.Header>{ticket.name}</Card.Header>
+									<Card.Header>{ticket.name}
+									
+									</Card.Header>
+									<Card.Content>{ticket.service.name}</Card.Content>
 									<Card.Meta>
+				            <Icon name="clock" />
+				            {moment(ticket.date).startOf('day').fromNow()}
+				          </Card.Meta>
+									<Card.Meta>
+
 										<Icon name="mobile" />
 										{ticket.mobile}
 									</Card.Meta>
@@ -132,7 +141,7 @@ class MyTicketList extends React.Component {
 										<Icon name="calendar" />
 										{moment(ticket.date).format('MMMM Do YYYY, h:mm:ss a')}
 									</Card.Meta>
-									<Card.Description>{ticket.service.name}</Card.Description>
+
 								</Card.Content>
 
 								<Card.Content extra>
@@ -212,6 +221,7 @@ class MyTicketList extends React.Component {
 							</Card>
 						))}
 					</Card.Group>
+
 				</Segment>
 			</div>
 		);

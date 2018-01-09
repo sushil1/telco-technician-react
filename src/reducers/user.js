@@ -3,10 +3,12 @@ import {
 	USER_LOGGED_OUT,
 	USERS_FETCHED,
 	USER_DELETED,
-	USER_UPDATED
+	USER_UPDATED,
+	CURRENT_USER_FETCHED
 } from '../constants';
 
 const initalState = {
+	loaded:false,
 	currentUser: {},
 	userList: {}
 };
@@ -14,10 +16,15 @@ const initalState = {
 export default (state = initalState, action = {}) => {
 	switch (action.type) {
 		case USER_LOGGED_IN:
-			return { ...state, currentUser: action.user };
+			return { ...state, loaded:true, currentUser: action.user };
+
+		case CURRENT_USER_FETCHED:
+			return { ...state, loaded:true, currentUser: action.user };
 
 		case USER_LOGGED_OUT:
-			return { currentUser: {}, userList: {} };
+			return { currentUser: {}, loaded:true, userList: {} };
+
+
 
 		case USERS_FETCHED:
 			return { ...state, userList: action.users };

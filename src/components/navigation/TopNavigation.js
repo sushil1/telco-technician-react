@@ -1,10 +1,11 @@
 import React from 'react';
-import { Menu, Dropdown, Image, Header, Icon } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Header, Icon, Grid, Popup, Button, Form } from 'semantic-ui-react';
 import { NavLink, Link } from 'react-router-dom';
 import gravatarUrl from 'gravatar-url';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
+import {BookingTrackerForm} from '../forms'
 
 const showGravatar = currentUser => {
 	if (currentUser.confirmed) {
@@ -35,9 +36,22 @@ const TopNavigation = ({ isAuthenticated, logout, currentUser }) => (
 		<Menu.Item as={NavLink} exact to="/quote">
 			Quick Quote
 		</Menu.Item>
-		<Menu.Item as={NavLink} exact to="/faq">
-			FAQ
-		</Menu.Item>
+
+
+
+		<Popup
+    trigger={<Menu.Item as={NavLink} to='/tracker'>Track Your Booking</Menu.Item>}
+    flowing
+    on="click"
+  >
+    <BookingTrackerForm/>
+  </Popup>
+
+
+
+
+
+
 
 		{isAuthenticated ? (
 			<Menu.Menu position="right">
@@ -73,7 +87,6 @@ const TopNavigation = ({ isAuthenticated, logout, currentUser }) => (
 function stateToProps(state) {
 	const user = state.user;
 	return {
-		isAuthenticated: !!user.currentUser.token,
 		currentUser: user.currentUser
 	};
 }
