@@ -2,7 +2,8 @@ import {
 	QUOTE_CREATED,
 	QUOTES_FETCHED,
 	QUOTE_UPDATED,
-	QUOTE_DELETED
+	QUOTE_DELETED,
+	USER_LOGGED_OUT
 } from '../constants';
 
 const initialState = {};
@@ -24,6 +25,9 @@ export default (state = initialState, action = {}) => {
 		case QUOTE_DELETED:
 			delete updated[action.id];
 			return updated;
+
+			case USER_LOGGED_OUT:
+				return {}
 
 		default:
 			return state;

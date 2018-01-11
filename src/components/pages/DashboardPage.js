@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Menu, Header, Icon, Grid } from 'semantic-ui-react';
+import { Menu, Icon, Grid } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import { ConfirmEmailMessage } from '../messages';
 import {

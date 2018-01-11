@@ -5,29 +5,29 @@ import {
 	TICKET_DELETED,
 	USER_LOGGED_OUT
 } from '../constants';
+import _ from 'lodash'
 
 const initialState = {};
 
-export default (state = initialState, action = {}) => {
-	let updated = Object.assign({}, state);
+export default (state = initialState, action) => {
 
 	switch (action.type) {
 		case TICKETS_FETCHED:
-			updated = action.tickets;
-			return updated;
+			return {...state, ...action.tickets}
+
+			//incase tickets come as an array, we would need to use
+			// const newPosts = _.mapKeys(action.payload, '_id')
+			// return {...state, ...newPosts}
 
 		case TICKET_CREATED:
 		case TICKET_UPDATED:
-			updated[action.ticket._id] = action.ticket;
-			return { ...updated };
+			return { ...state, [action.ticket._id]: action.ticket };
 
 		case TICKET_DELETED:
-			delete updated[action.id];
-			return updated;
+			return _.omit(state, action.id)
 
 		case USER_LOGGED_OUT:
-			updated = {};
-			return updated;
+			return {}
 
 		default:
 			return state;

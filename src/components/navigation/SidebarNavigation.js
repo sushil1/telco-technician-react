@@ -17,13 +17,13 @@ class SidebarNavigation extends Component {
 				<Menu inverted attached="top">
 					<Menu.Item as={NavLink} exact to="/">
 						<Header inverted>
-							Telco-Technician <Icon name="settings" />
+							Telco-Technician
 						</Header>
 					</Menu.Item>
 
 					<Menu.Item position="right" onClick={() => this.toggleVisibility()}>
 						{visible ? (
-							<Icon name="remove" size="large" />
+							<Icon name="remove" size="large"/>
 						) : (
 							<Icon name="tasks" size="large" />
 						)}
@@ -71,12 +71,7 @@ class SidebarNavigation extends Component {
 						onClick={() => this.toggleVisibility()}>
 						Quick Quote
 					</Menu.Item>
-					<Menu.Item
-						as={NavLink}
-						to="/faq"
-						onClick={() => this.toggleVisibility()}>
-						FAQ
-					</Menu.Item>
+					
 					{isAuthenticated && (
 						<Menu.Item
 							as={Link}

@@ -1,6 +1,5 @@
 import React from 'react'
 import {Grid, Form, Button, Message, Card, Icon} from 'semantic-ui-react'
-import { InlineError } from '../messages';
 import {connect} from 'react-redux'
 import {trackBooking} from '../../actions/tickets'
 import {Link } from 'react-router-dom'
@@ -34,7 +33,6 @@ class BookingTrackerForm extends React.Component{
 		const errors = this.validate(this.state.data);
 		this.setState({ errors });
 		if (Object.keys(errors).length === 0) {
-      console.log(this.state.data)
 			this.setState({ loading: true })
 			this.props
 				.trackBooking(this.state.data)

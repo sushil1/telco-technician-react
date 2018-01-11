@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import { connect } from 'react-redux';
-import { Button, Grid, Segment, Message, Divider } from 'semantic-ui-react';
+import { Button, Segment, Message } from 'semantic-ui-react';
 import { CreateTicketPage } from '../pages';
 import { fetchAllQuotes, updateQuote, deleteQuote } from '../../actions/quotes';
 

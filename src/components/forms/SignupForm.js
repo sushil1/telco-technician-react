@@ -60,7 +60,7 @@ class SignupForm extends Component {
 					<Form.Field error={!!errors.email}>
 						<label htmlFor="email">Email</label>
 						<input
-							name="type"
+							name="email"
 							type="text"
 
 							placeholder="Enter your email"

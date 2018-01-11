@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import { connect } from 'react-redux';
-import { Button, Grid, Segment, Message } from 'semantic-ui-react';
+import { Button, Segment, Message } from 'semantic-ui-react';
 import { fetchAllUsers, updateUser, deleteUser } from '../../actions/users';
 
 import 'react-table/react-table.css';
@@ -103,7 +103,7 @@ class UserList extends React.Component {
 			}
 		];
 
-		const noResourceMessage = (
+		const {noResourceMessage} = (
 			<Message>
 				<Message.Content>No Resources found</Message.Content>
 			</Message>
@@ -112,7 +112,7 @@ class UserList extends React.Component {
 		return (
 			<Segment raised color="teal">
 				{data.length === 0 ? (
-					<div>noResourceMessage</div>
+					<div>{noResourceMessage}</div>
 				) : (
 					<ReactTable
 						defaultPageSize={20}

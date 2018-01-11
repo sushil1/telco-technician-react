@@ -1,6 +1,7 @@
 import React from 'react';
-import { Header, Divider, Icon, Grid, List, Button, Image } from 'semantic-ui-react';
+import { Header, Divider, Icon, Grid, List, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import ReactImageFallback from 'react-image-fallback'
 
 const ServiceDetail = ({ service }) => (
 	<Grid.Row>
@@ -68,10 +69,16 @@ const ServiceDetail = ({ service }) => (
 		<Header sub>Our stats</Header>
 		<Divider />
 	</Grid.Column>
-	<Grid.Column mobile={16} tablet={8} computer={8}>
-		<Image src="https://mrtelco.com/images/content/16/mdf-jumpering.svg" />
+	<Grid.Column mobile={16} tablet={8} computer={8} centered style={{paddingTop:'10px'}}>
+		<ReactImageFallback
+					src={service.thumbnail}
+					fallbackImage='http://via.placeholder.com/250x250'
+					alt='Thumbnail'
+					className='ui image'
+				/>
 
 	</Grid.Column>
+
 	</Grid.Row>
 );
 

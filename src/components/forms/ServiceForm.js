@@ -89,7 +89,7 @@ class ServiceForm extends Component {
 	};
 
 	render() {
-		console.log(this.state.data.service)
+		
 		const { data, errors, loading } = this.state;
 		const defaultService = this.props.serviceId
 		const serviceOptions = this.props.serviceOptions;

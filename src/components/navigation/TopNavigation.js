@@ -1,11 +1,13 @@
 import React from 'react';
-import { Menu, Dropdown, Image, Header, Icon, Grid, Popup, Button, Form } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Header, Popup } from 'semantic-ui-react';
 import { NavLink, Link } from 'react-router-dom';
-import gravatarUrl from 'gravatar-url';
+import Gravatar from 'react-gravatar'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
 import {BookingTrackerForm} from '../forms'
+
+
 
 const showGravatar = currentUser => {
 	if (currentUser.confirmed) {
@@ -18,7 +20,7 @@ const TopNavigation = ({ isAuthenticated, logout, currentUser }) => (
 	<Menu inverted>
 		<Menu.Item as={NavLink} exact to="/">
 			<Header inverted>
-				Telco-Technician <Icon name="settings" />
+				Telco Technician
 			</Header>
 		</Menu.Item>
 
@@ -50,18 +52,15 @@ const TopNavigation = ({ isAuthenticated, logout, currentUser }) => (
 
 
 
-
-
-
 		{isAuthenticated ? (
 			<Menu.Menu position="right">
 				<Dropdown
 					trigger={
 						<Image
 							avatar
-							src={gravatarUrl(showGravatar(currentUser))}
+
 							style={{ marginTop: '10px' }}
-						/>
+						>{<Gravatar email={showGravatar(currentUser)} default="mm"/> }</Image>
 					}>
 					<Dropdown.Menu>
 						<Dropdown.Item as={Link} to="/" onClick={() => logout()}>

@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import {
 	Message,
 	Icon,
-	Modal,
-	Header,
 	Grid,
 	Segment,
 	Divider
@@ -36,8 +34,8 @@ class ServiceBookingPage extends React.Component {
 	};
 
 	render() {
-		const { showSucessMessage, serviceId } = this.state;
-		console.log("service ", serviceId)
+		const { showSucessMessage } = this.state;
+
 
 		const messageComponent = (
 			<Message success icon floating>

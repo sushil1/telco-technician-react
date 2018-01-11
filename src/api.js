@@ -32,7 +32,8 @@ export default {
 
 		update: (id, data) =>
 			axios.patch(`/api/users/${id}`, { data }).then(res => res.data.user),
-		delete: id => axios.delete(`/api/users/${id}`).then(res => res.data.id)
+		delete: id => axios.delete(`/api/users/${id}`).then(res => res.data.id),
+		fetchStaffOptions: () => axios.get('/api/users/staff').then(res => res.data.options),
 	},
 
 	service: {

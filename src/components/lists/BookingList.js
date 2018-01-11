@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactTable from 'react-table';
 import { connect } from 'react-redux';
-import { Button, Grid, Segment } from 'semantic-ui-react';
+import { Button, Segment } from 'semantic-ui-react';
 import { CreateTicketPage } from '../pages';
 import {
 	fetchAllBookings,

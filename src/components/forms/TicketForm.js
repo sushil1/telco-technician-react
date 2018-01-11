@@ -30,18 +30,7 @@ class TicketForm extends Component {
 		loading: false,
 		errors: {},
 		formStatus: '',
-		staffOptions: [
-			{
-				key: '5a44d70b1b25298279d51d7d',
-				value: '5a44d70b1b25298279d51d7d',
-				text: 'peter@gmail.com -- technician'
-			},
-			{
-				key: '5a44d7251b25298279d51d7e',
-				value: '5a44d7251b25298279d51d7e',
-				text: 'jack@gmail.com -- technician'
-			}
-		],
+
 		jobStatusOptions: [
 			{
 				key: 1,
@@ -179,7 +168,7 @@ class TicketForm extends Component {
 	};
 
 	render() {
-		const staffOptions = this.state.staffOptions;
+		const staffOptions = this.props.staffOptions;
 		const paymentStatusOptions = this.state.paymentStatusOptions;
 		const jobStatusOptions = this.state.jobStatusOptions;
 		const { data, errors, loading, formStatus } = this.state;

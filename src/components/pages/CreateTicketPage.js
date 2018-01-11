@@ -5,11 +5,22 @@ import { createTicket, updateTicket } from '../../actions/tickets';
 import { updateBooking } from '../../actions/bookings';
 import { updateQuote } from '../../actions/quotes';
 import { TicketForm } from '../forms';
+import {fetchStaffOptions, fetchPaymentOptions, fetchJobStausOptions} from '../../actions/form'
+
 
 class CreateTicketPage extends React.Component {
 	state = {
 		open: true
 	};
+
+	//lets fetch the form options required in our form
+	//staffOptions to assign, payment Options and job status Options
+
+	componentDidMount(){
+		this.props.fetchStaffOptions()
+		// this.props.fetchPaymentOptions()
+		// this.props.fetchJobStausOptions()
+	}
 
 	updateTicket = data => {
 		const updatedData = {
@@ -59,7 +70,8 @@ class CreateTicketPage extends React.Component {
 	};
 
 	render() {
-		const { ticketData, serviceOptions } = this.props;
+		console.log(this.props.form)
+		const { ticketData, serviceOptions, staffOptions } = this.props;
 		return (
 			<Grid.Column mobile={12} tablet={10} computer={8}>
 				<Modal
@@ -78,6 +90,7 @@ class CreateTicketPage extends React.Component {
 								serviceOptions={serviceOptions}
 								submitNewTicket={this.submit}
 								updateTicket={this.updateTicket}
+								staffOptions={staffOptions}
 							/>
 						</Modal.Content>
 					</Segment>
@@ -87,9 +100,17 @@ class CreateTicketPage extends React.Component {
 	}
 }
 
-export default connect(null, {
+function stateToProps(state){
+	const form = state.form
+	return{
+		staffOptions: form.staffOptions
+	}
+}
+
+export default connect(stateToProps, {
 	createTicket,
 	updateBooking,
 	updateQuote,
-	updateTicket
+	updateTicket,
+	fetchStaffOptions, fetchPaymentOptions, fetchJobStausOptions
 })(CreateTicketPage);

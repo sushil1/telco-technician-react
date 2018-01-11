@@ -18,12 +18,14 @@ const Footer = () => (
 			</Menu>
 		</Grid.Row>
 		<br />
-		<br />
-		<Grid.Row textAlign="center">
+		
+			<div style={{width:'60%', textAlign:'center', margin:'auto'}}>
 			<h4 className="ui inverted header">TelcoTechnician Pty. Ltd.</h4>
 			<p>Book us for any telecom work.</p>
 			<p>Currently serving at Sydney areas, nothern beaches.</p>
-		</Grid.Row>
+
+			</div>
+
 	</Segment>
 );
 

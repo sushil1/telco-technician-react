@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import {
 	Button,
-	Grid,
 	Segment,
 	Card,
 	Icon,
 	Accordion,
-	Popup,
-	Loader, Image
+	Popup, Grid
 } from 'semantic-ui-react';
 import { CreateTicketPage } from '../pages';
 import {
@@ -120,7 +118,7 @@ class MyTicketList extends React.Component {
 							<Card key={ticket._id} color="brown" centered>
 								<Card.Content>
 									<Card.Header>{ticket.name}
-									
+
 									</Card.Header>
 									<Card.Content>{ticket.service.name}</Card.Content>
 									<Card.Meta>

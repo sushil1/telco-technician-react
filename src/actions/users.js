@@ -42,7 +42,6 @@ export const currentUserFetched = user => ({
 
 export const fetchCurrentUser = () => (dispatch) =>
 	api.user.fetchCurrentUser()
-	.then(user => {
-		console.log(user);
+	.then(user =>
 		dispatch(currentUserFetched(user))
-	})
+	)

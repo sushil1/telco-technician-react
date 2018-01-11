@@ -2,7 +2,8 @@ import {
 	BOOKING_CREATED,
 	BOOKINGS_FETCHED,
 	BOOKING_UPDATED,
-	BOOKING_DELETED
+	BOOKING_DELETED,
+	USER_LOGGED_OUT
 } from '../constants';
 
 const initialState = {};
@@ -23,6 +24,9 @@ export default (state = initialState, action = {}) => {
 		case BOOKING_DELETED:
 			delete updated[action.id];
 			return updated;
+
+		case USER_LOGGED_OUT:
+			return {}
 
 		default:
 			return state;
