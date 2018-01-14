@@ -33,6 +33,12 @@ class CreateTicketPage extends React.Component {
 		if (typeof data.assignedStaff === 'object') {
 			updatedData['assignedStaff'] = data.assignedStaff._id;
 		}
+		if (typeof data.jobStatus === 'object') {
+			updatedData['jobStatus'] = data.jobStatus._id;
+		}
+		if (typeof data.paymentStatus === 'object') {
+			updatedData['paymentStatus'] = data.paymentStatus._id;
+		}
 
 		delete updatedData['_id'];
 		delete updatedData['createdAt'];

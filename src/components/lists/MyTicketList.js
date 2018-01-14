@@ -182,7 +182,7 @@ class MyTicketList extends React.Component {
 									</Card.Meta>
 
 
-									{this.props.isAdmin && <Label as='a' ribbon color='orange'>{ticket.assignedStaff.email}</Label>}
+									{this.props.isAdmin && <Label as='a' ribbon color='orange'>{ticket.assignedStaff.name}</Label>}
 								</Card.Content>
 
 								<Card.Content extra>

@@ -129,7 +129,7 @@ class TicketList extends React.Component {
 			},
 			{
 				Header: 'AssignedTo',
-				accessor: 'assignedStaff.email'
+				accessor: 'assignedStaff.name'
 			},
 			// {
 			// 	Header: 'Cost',

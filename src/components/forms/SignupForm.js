@@ -8,6 +8,7 @@ class SignupForm extends Component {
 	state = {
 		data: {
 			email: '',
+			name:'',
 			password: '',
 			passwordConfirmation: ''
 		},
@@ -37,6 +38,7 @@ class SignupForm extends Component {
 	validate = data => {
 		const errors = {};
 		if (!data.email) errors.email = "Can't be blank";
+		if(!data.name)errors.name="Name is required"
 		if (!isEmail(data.email)) errors.email = 'Invalid email';
 		if (!data.password) errors.password = "Can't be blank";
 		if (!data.passwordConfirmation)
@@ -57,6 +59,20 @@ class SignupForm extends Component {
 							<p>{errors.global}</p>
 						</Message>
 					)}
+					<Form.Field error={!!errors.name}>
+						<label htmlFor="name">Name</label>
+						<input
+							name="name"
+							type="text"
+
+							placeholder="Enter your name"
+							value={data.name}
+							onChange={this.onChange}
+
+						/>
+
+						{errors.name && <InlineError text={errors.name} />}
+					</Form.Field>
 					<Form.Field error={!!errors.email}>
 						<label htmlFor="email">Email</label>
 						<input
