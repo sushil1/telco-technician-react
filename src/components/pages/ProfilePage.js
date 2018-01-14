@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {Card, Button} from 'semantic-ui-react'
+import {Card, Button, Label} from 'semantic-ui-react'
 
 
 
@@ -12,6 +12,7 @@ class ProfilePage extends React.Component{
 		return(
 			<Card  style={{ marginLeft:'10%', marginTop:'50px',}}>
 
+
       <Card.Header>
         {user.email}
       </Card.Header>
@@ -19,6 +20,7 @@ class ProfilePage extends React.Component{
 
           {user.role}
       </Card.Meta>
+
 
     <Card.Content extra>
       <div>

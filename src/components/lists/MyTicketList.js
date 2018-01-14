@@ -7,7 +7,7 @@ import {
 	Card,
 	Icon,
 	Accordion,
-	Popup, Grid
+	Popup, Grid, Label
 } from 'semantic-ui-react';
 import { CreateTicketPage } from '../pages';
 import {
@@ -79,11 +79,65 @@ class MyTicketList extends React.Component {
 		this.props.updateTicket(id, args);
 	};
 
+	renderLabel(data){
+		let colorName;
+		let iconName;
+			switch(data){
+				case 'assigned':
+				return {
+					colorName:'teal',
+					iconName:'user'
+				}
+				case 'on the way':
+				return {
+					colorName:'green',
+					iconName:'road'
+				}
+				case 'at the site':
+				return {
+					colorName:'olive',
+					iconName:'home'
+				}
+				case 'completed':
+				return {
+					colorName:'blue',
+					iconName:'checkmark'
+				}
+				case 'incomplete':
+				return {
+					colorName:'black',
+					iconName:'close'
+				}
+				case 'cancelled':
+				return {
+					colorName:'red',
+					iconName:'close'
+				}
+				case 'postponed':
+				return {
+					colorName:'grey',
+					iconName:'wait'
+				}
+
+
+				default:
+				return {
+					colorName:'grey',
+					iconName:'lab'
+				}
+			}
+	}
+
 
 
 	render() {
 		const tickets = Object.values(this.state.data);
 		const { loading, activeIndex, popOverloading } = this.state;
+		console.log(this.props)
+		const TicketLabel = ({colorName, iconName}) => (
+			<Label corner='right' color={colorName}><Icon name={iconName} /></Label>
+		)
+
 
 		return (
 			<div>
@@ -94,22 +148,7 @@ class MyTicketList extends React.Component {
 						serviceOptions={this.props.serviceOptions}
 					/>
 				)}
-				<Segment>
-					<Button
-						content="Create New"
-						icon="add"
-						color="teal"
-						labelPosition="right"
-						onClick={() => this.showUpdateTicketForm(null)}
-					/>
 
-					<Button
-						content="Find"
-						icon="search"
-						color="teal"
-						labelPosition="right"
-					/>
-				</Segment>
 
 				<Segment raised color="teal" loading={loading} centered>
 
@@ -120,6 +159,9 @@ class MyTicketList extends React.Component {
 									<Card.Header>{ticket.name}
 
 									</Card.Header>
+
+									<TicketLabel {...this.renderLabel(ticket.jobStatus.name)}/>
+
 									<Card.Content>{ticket.service.name}</Card.Content>
 									<Card.Meta>
 				            <Icon name="clock" />
@@ -134,12 +176,13 @@ class MyTicketList extends React.Component {
 										<Icon name="marker" />
 										{ticket.address}
 									</Card.Meta>
-
 									<Card.Meta>
 										<Icon name="calendar" />
 										{moment(ticket.date).format('MMMM Do YYYY, h:mm:ss a')}
 									</Card.Meta>
 
+
+									{this.props.isAdmin && <Label as='a' ribbon color='orange'>{ticket.assignedStaff.email}</Label>}
 								</Card.Content>
 
 								<Card.Content extra>
@@ -167,49 +210,54 @@ class MyTicketList extends React.Component {
 
 									<div className="ui two buttons">
 
-									{
-										(ticket.acceptedBy.indexOf(ticket.assignedStaff._id) !== -1) ? (
-											<Button color='teal' onClick={() => this.showUpdateTicketForm(ticket._id)}>
-											Update</Button>
-										) : (
-											<div className="ui two buttons">
-											<Popup
-												trigger={<Button basic content="Accept" color="green" />}
-												on="click">
-												<Grid divided columns="equal">
-													<Grid.Column>
-														<Button
-															color="green"
-															content="Yes"
-															loading={popOverloading}
-															onClick={() =>this.acceptTicket(ticket._id)}
-														/>
-													</Grid.Column>
-													<Grid.Column>
-														<Button color="grey" content="No" fluid />
-													</Grid.Column>
-												</Grid>
-											</Popup>
-											<Popup
-												trigger={<Button content="Decline" color="red" basic />}
-												on="click">
-												<Grid divided columns="equal">
-													<Grid.Column>
-														<Button
-															color="green"
-															content="Yes"
-															onClick={() => this.declineTicket(ticket._id)}
-														/>
-													</Grid.Column>
-													<Grid.Column>
-														<Button color="grey" content="No" fluid />
-													</Grid.Column>
-												</Grid>
-											</Popup>
-											</div>
-										)
+									{this.props.isAdmin	? (<Button color='teal' onClick={() => this.showUpdateTicketForm(ticket._id)}>
+									Update</Button>) : (
 
-									}
+											(ticket.acceptedBy.indexOf(ticket.assignedStaff._id) !== -1) ? (
+												<Button color='teal' onClick={() => this.showUpdateTicketForm(ticket._id)}>
+												Update</Button>
+											) : (
+												<div className="ui two buttons">
+												<Popup
+													trigger={<Button basic content="Accept" color="green" />}
+													on="click">
+													<Grid divided columns="equal">
+														<Grid.Column>
+															<Button
+																color="green"
+																content="Yes"
+																loading={popOverloading}
+																onClick={() =>this.acceptTicket(ticket._id)}
+															/>
+														</Grid.Column>
+														<Grid.Column>
+															<Button color="grey" content="No" fluid />
+														</Grid.Column>
+													</Grid>
+												</Popup>
+												<Popup
+													trigger={<Button content="Decline" color="red" basic />}
+													on="click">
+													<Grid divided columns="equal">
+														<Grid.Column>
+															<Button
+																color="green"
+																content="Yes"
+																onClick={() => this.declineTicket(ticket._id)}
+															/>
+														</Grid.Column>
+														<Grid.Column>
+															<Button color="grey" content="No" fluid />
+														</Grid.Column>
+													</Grid>
+												</Popup>
+												</div>
+											)
+									)}
+
+
+
+
 
 
 

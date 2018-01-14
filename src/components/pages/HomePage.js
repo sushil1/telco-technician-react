@@ -65,34 +65,61 @@ const HomePage = () => (
 			</Grid.Column>
 		</Grid.Row>
 
-		<Grid.Row>
-			<Grid.Column width={8}>
+
+
+		<Grid.Row centered >
+			<Grid.Column width={6}>
 				<Image src={'http://via.placeholder.com/250x250'} />Section 1 here
 			</Grid.Column>
-			<Grid.Column width={8}>
+			<Grid.Column width={6}>
 				<Image src={'http://via.placeholder.com/250x250'} />Section 2 here
 			</Grid.Column>
 		</Grid.Row>
-		<Grid.Row>
-			<Grid.Column width={8}>
-				<Image src={'http://via.placeholder.com/250x250'} />
-			</Grid.Column>
-			<Grid.Column width={8}>
-				<Image src={'http://via.placeholder.com/250x250'} />
-			</Grid.Column>
-		</Grid.Row>
-		<Grid.Row>
-			<Grid.Column width={8}>
-				 The point of using Lorem Ipsum is that it has a
-				more-or-less normal distribution of letters, as opposed to using
-				'Content here, content here', making it look like readable English.
-			</Grid.Column>
-			<Grid.Column width={8}>
-				What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing
-				and typesetting industry. Lorem Ipsum has been the industry standard
 
+		<Grid.Row divided style={{ height: '150px', paddingTop: '0' }}>
+		<Grid.Column
+			stretched
+			width={8}
+			textAlign="center"
+			style={{
+				backgroundColor:'#3878bc',
+				backgroundSize: 'cover',
+				boxShadow: 'inset 0px 0px 400px 110px rgba(0, 0, 0, .7)',
+
+				color: '#fff'
+			}}>
+				<div style={{marginTop:'2em', fontSize:'1em'}}>
+				 The point of using Lorem Ipsum is that it has a
+				more-or-less normal distribution of letters.
+				</div>
+			</Grid.Column>
+			<Grid.Column
+				stretched
+				width={8}
+				textAlign="center"
+				style={{
+					backgroundColor:'#3878bc',
+					backgroundSize: 'cover',
+					boxShadow: 'inset 0px 0px 400px 110px rgba(0, 0, 0, .7)',
+
+					color: '#fff'
+				}}>
+					<div style={{marginTop:'2em', fontSize:'1em'}}>
+					 The point of using Lorem Ipsum is that it has a
+					more-or-less normal distribution of letters.
+					</div>
+				</Grid.Column>
+		</Grid.Row>
+
+		<Grid.Row centered >
+			<Grid.Column width={6} centered>
+				<Image src={'http://via.placeholder.com/250x250'} />
+			</Grid.Column>
+			<Grid.Column width={6}>
+				<Image src={'http://via.placeholder.com/250x250'} />
 			</Grid.Column>
 		</Grid.Row>
+
 
 	</Grid>
 );

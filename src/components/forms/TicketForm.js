@@ -15,7 +15,7 @@ const initialData = {
 	name: '',
 	message: '',
 	service: null,
-	jobStatus: '',
+	jobStatus: null,
 	assignedStaff: null,
 	paymentStatus: null,
 	notes: '',
@@ -29,67 +29,7 @@ class TicketForm extends Component {
 		data: initialData,
 		loading: false,
 		errors: {},
-		formStatus: '',
-
-		jobStatusOptions: [
-			{
-				key: 1,
-				value: 1,
-				text: 'Assigned'
-			},
-			{
-				key: 2,
-				value: 2,
-				text: 'On the way'
-			},
-			{
-				key: 3,
-				value: 3,
-				text: 'At the site'
-			},
-			{
-				key: 4,
-				value: 4,
-				text: 'Complete'
-			},
-			{
-				key: 5,
-				value: 5,
-				text: 'Incomplete'
-			}
-		],
-		paymentStatusOptions: [
-			{
-				key: 1,
-				value: 1,
-				text: 'Paid'
-			},
-			{
-				key: 2,
-				value: 2,
-				text: 'Unpaid'
-			},
-			{
-				key: 3,
-				value: 3,
-				text: 'Paid via paypal'
-			},
-			{
-				key: 4,
-				value: 4,
-				text: 'Online Payment'
-			},
-			{
-				key: 5,
-				value: 5,
-				text: 'Paid Cash'
-			},
-			{
-				key: 6,
-				value: 6,
-				text: 'Partial Paid'
-			}
-		]
+		formStatus: ''
 	};
 
 	componentDidMount() {
@@ -168,9 +108,10 @@ class TicketForm extends Component {
 	};
 
 	render() {
+
 		const staffOptions = this.props.staffOptions;
-		const paymentStatusOptions = this.state.paymentStatusOptions;
-		const jobStatusOptions = this.state.jobStatusOptions;
+		const paymentStatusOptions = this.props.paymentOptions;
+		const jobStatusOptions = this.props.jobStatusOptions;
 		const { data, errors, loading, formStatus } = this.state;
 		const serviceOptions = this.props.serviceOptions;
 		const defaultServiceValue = this.props.ticketData.service
@@ -180,10 +121,10 @@ class TicketForm extends Component {
 			? this.props.ticketData.assignedStaff._id
 			: null;
 		const defaultjobStatus = this.props.ticketData.jobStatus
-			? parseInt(this.props.ticketData.jobStatus, 10)
+			? this.props.ticketData.jobStatus._id
 			: null;
 		const defaultpaymentStatus = this.props.ticketData.paymentStatus
-			? parseInt(this.props.ticketData.paymentStatus, 10)
+			? this.props.ticketData.paymentStatus._id
 			: null;
 		return (
 			<div>

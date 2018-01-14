@@ -8,6 +8,7 @@ import {
 	updateTicket,
 	deleteTicket
 } from '../../actions/tickets';
+import MyTicketList from './MyTicketList'
 
 import 'react-table/react-table.css';
 
@@ -22,7 +23,8 @@ class TicketList extends React.Component {
 		resized: [],
 		filtered: [],
 		showModal: false,
-		ticketData: {}
+		ticketData: {},
+		cardListView:false
 	};
 
 	componentDidMount() {
@@ -56,6 +58,10 @@ class TicketList extends React.Component {
 	handleDelete = id => {
 		this.props.deleteTicket(id);
 	};
+
+	toggleCardView = () => this.setState({
+		cardListView: !this.state.cardListView
+	})
 
 	renderEditable = cellInfo => {
 		return (
@@ -119,7 +125,7 @@ class TicketList extends React.Component {
 			},
 			{
 				Header: 'Job Status',
-				accessor: 'jobStatus'
+				accessor: 'jobStatus.name'
 			},
 			{
 				Header: 'AssignedTo',
@@ -135,7 +141,7 @@ class TicketList extends React.Component {
 			// },
 			{
 				Header: 'Payment',
-				accessor: 'paymentStatus'
+				accessor: 'paymentStatus.name'
 			},
 			{
 				Header: 'Update',
@@ -184,36 +190,50 @@ class TicketList extends React.Component {
 						color="teal"
 						labelPosition="right"
 					/>
-				</Segment>
-				<Segment raised color="teal">
-					<ReactTable
-						defaultPageSize={20}
-						data={data}
-						columns={columns}
-						filterable
-						className="-striped -highlight"
-						style={{
-							height: '400px'
-							// This will force the table body to overflow and scroll, since there is not enough room
-						}}
-						// Controlled props
-						sorted={this.state.sorted}
-						page={this.state.page}
-						pageSize={this.state.pageSize}
-						expanded={this.state.expanded}
-						resized={this.state.resized}
-						filtered={this.state.filtered}
-						//callbacks
-						onSortedChange={sorted => this.setState({ sorted })}
-						onPageChange={page => this.setState({ page })}
-						onPageSizeChange={(pageSize, page) =>
-							this.setState({ page, pageSize })
-						}
-						onExpandedChange={expanded => this.setState({ expanded })}
-						onResizedChange={resized => this.setState({ resized })}
-						onFilteredChange={filtered => this.setState({ filtered })}
+
+					<Button
+						content={this.state.cardListView ? 'Show Table' : 'Show Cards'}
+						icon='list'
+						color="teal"
+						labelPosition="right"
+						onClick={this.toggleCardView}
 					/>
 				</Segment>
+
+					{this.state.cardListView &&
+						<MyTicketList isAdmin={this.props.isAdmin}/>}
+						{!this.state.cardListView && <Segment raised color="teal">
+							<ReactTable
+								defaultPageSize={20}
+								data={data}
+								columns={columns}
+								filterable
+								className="-striped -highlight"
+								style={{
+									height: '400px'
+									// This will force the table body to overflow and scroll, since there is not enough room
+								}}
+								// Controlled props
+								sorted={this.state.sorted}
+								page={this.state.page}
+								pageSize={this.state.pageSize}
+								expanded={this.state.expanded}
+								resized={this.state.resized}
+								filtered={this.state.filtered}
+								//callbacks
+								onSortedChange={sorted => this.setState({ sorted })}
+								onPageChange={page => this.setState({ page })}
+								onPageSizeChange={(pageSize, page) =>
+									this.setState({ page, pageSize })
+								}
+								onExpandedChange={expanded => this.setState({ expanded })}
+								onResizedChange={resized => this.setState({ resized })}
+								onFilteredChange={filtered => this.setState({ filtered })}
+							/>
+						</Segment>
+					}
+
+
 			</div>
 		);
 	}

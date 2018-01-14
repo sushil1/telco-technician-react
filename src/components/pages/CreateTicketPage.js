@@ -17,9 +17,9 @@ class CreateTicketPage extends React.Component {
 	//staffOptions to assign, payment Options and job status Options
 
 	componentDidMount(){
-		this.props.fetchStaffOptions()
-		// this.props.fetchPaymentOptions()
-		// this.props.fetchJobStausOptions()
+		Promise.all([this.props.fetchStaffOptions(),
+		this.props.fetchPaymentOptions(),
+		this.props.fetchJobStausOptions()])
 	}
 
 	updateTicket = data => {
@@ -70,8 +70,7 @@ class CreateTicketPage extends React.Component {
 	};
 
 	render() {
-		console.log(this.props.form)
-		const { ticketData, serviceOptions, staffOptions } = this.props;
+		const { ticketData, serviceOptions, staffOptions, paymentOptions, jobStatusOptions } = this.props;
 		return (
 			<Grid.Column mobile={12} tablet={10} computer={8}>
 				<Modal
@@ -91,6 +90,8 @@ class CreateTicketPage extends React.Component {
 								submitNewTicket={this.submit}
 								updateTicket={this.updateTicket}
 								staffOptions={staffOptions}
+								jobStatusOptions={jobStatusOptions}
+								paymentOptions={paymentOptions}
 							/>
 						</Modal.Content>
 					</Segment>
@@ -103,7 +104,10 @@ class CreateTicketPage extends React.Component {
 function stateToProps(state){
 	const form = state.form
 	return{
-		staffOptions: form.staffOptions
+		staffOptions: form.staffOptions,
+		paymentOptions:form.paymentOptions,
+		jobStatusOptions:form.jobStatusOptions
+
 	}
 }
 

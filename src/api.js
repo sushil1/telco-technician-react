@@ -101,5 +101,12 @@ export default {
 			axios.patch(`/api/quotes/${id}`, { data }).then(res => res.data.quote),
 
 		delete: id => axios.delete(`/api/quotes/${id}`).then(res => res.data.id)
-	}
+	},
+
+	payment: {
+		fetchPaymentOptions: () => axios.get('/api/payments/payment-options').then(res => res.data.options),
+	},
+	jobStatus: {
+		fetchJobStausOptions: () => axios.get('/api/jobstatus/jobstatus-options').then(res => res.data.options),
+	},
 };

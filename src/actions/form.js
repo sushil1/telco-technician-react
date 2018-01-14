@@ -14,7 +14,7 @@ export const paymentOptionsFetched = (options) => ({
   type:PAYMENT_OPTIONS_FETCHED,
   options
 })
-export const fetchJobStausOptions = () => (dispatch) => api.jobStatus.fetchJobStausOptions().then(options => dispatch(staffOptionsFetched(options)))
+export const fetchJobStausOptions = () => (dispatch) => api.jobStatus.fetchJobStausOptions().then(options => dispatch(jobStatusOptionsFetched(options)))
 
 export const jobStatusOptionsFetched = (options) => ({
   type:JOB_STATUS_OPTIONS_FETCHED,
