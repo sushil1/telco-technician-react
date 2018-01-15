@@ -8,26 +8,29 @@ import { Link } from 'react-router-dom';
 
 class QuotePage extends React.Component {
 	state = {
-		showSucessMessage: false
+		showSucessMessage: false,
+		quoteRefrence:''
 	};
 
 	submit = data =>
 		this.props
 			.createQuote(data)
-			.then(() => this.setState({ showSucessMessage: true }));
+			.then((res) =>
+				this.setState({ quoteRefrence:res.quote.refrenceId, showSucessMessage: true})
+			);
 
 	handleDismiss = () => this.props.history.push('/');
 
 	hideSuccessMessage = () => this.setState({ showSucessMessage: false });
 
 	render() {
-		const { showSucessMessage } = this.state;
+		const { showSucessMessage, quoteRefrence } = this.state;
 		const successMessage = (
 			<Message success icon floating>
 				<Icon name="check" tiny="true" />
 				<Message.Content>
 					<Message.Header>Quote Request Sent!</Message.Header>
-					We will contact you ASAP.
+					We will contact you ASAP. Your quote refrence is  <strong>{quoteRefrence}</strong>
 				</Message.Content>
 				<Icon className="close" onClick={this.handleDismiss} />
 			</Message>

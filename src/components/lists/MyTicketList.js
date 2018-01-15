@@ -133,7 +133,6 @@ class MyTicketList extends React.Component {
 	render() {
 		const tickets = Object.values(this.state.data);
 		const { loading, activeIndex, popOverloading } = this.state;
-		console.log(this.props)
 		const TicketLabel = ({colorName, iconName}) => (
 			<Label corner='right' color={colorName}><Icon name={iconName} /></Label>
 		)

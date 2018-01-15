@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom';
 class ServiceBookingPage extends React.Component {
 	state = {
 		showSucessMessage: false,
+		bookingRefrence:''
 	};
 
 	componentDidMount() {
@@ -26,7 +27,7 @@ class ServiceBookingPage extends React.Component {
 	submit = data =>
 		this.props
 			.bookService(data)
-			.then(() => this.setState({ showSucessMessage: true }));
+			.then((res) => this.setState({ bookingRefrence:res.booking.refrenceId, showSucessMessage: true}));
 
 	handleDismiss = () => {
 		this.setState({ showSucessMessage: false });
@@ -34,8 +35,7 @@ class ServiceBookingPage extends React.Component {
 	};
 
 	render() {
-		const { showSucessMessage } = this.state;
-
+		const { showSucessMessage, bookingRefrence } = this.state;
 
 		const messageComponent = (
 			<Message success icon floating>
@@ -43,6 +43,7 @@ class ServiceBookingPage extends React.Component {
 				<Message.Content>
 					<Message.Header>Booking Request Sent!</Message.Header>
 					Our technician will contact you for confirmation.
+					Your refrence number is <strong>{bookingRefrence}</strong>
 				</Message.Content>
 				<Icon name="close" tiny="true" onClick={this.handleDismiss} />
 			</Message>
@@ -97,7 +98,7 @@ function stateToProps(state) {
 		text: item.name
 	}));
 	return {
-		serviceOptions: options
+		serviceOptions: options,
 	};
 }
 

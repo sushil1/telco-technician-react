@@ -48,5 +48,5 @@ export const deleteTicket = id => dispatch =>
 	api.ticket.delete(id).then(id => dispatch(ticketDeleted(id)));
 
 
-export const trackBooking = (bookingId, mobile) => dispatch =>
-api.ticket.trackBooking(bookingId, mobile)
+export const trackBooking = (refrenceId, mobile) => dispatch =>
+api.ticket.trackBooking(refrenceId, mobile)
