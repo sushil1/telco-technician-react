@@ -71,7 +71,6 @@ class QuoteList extends React.Component {
 				onBlur={e => {
 					const data = this.state.data;
 					data[cellInfo.original._id][cellInfo.column.id] = e.target.innerHTML;
-					console.log(cellInfo);
 					this.setState({ data });
 					this.updateQuote(cellInfo.original._id, {
 						[cellInfo.column.id]: e.target.innerHTML

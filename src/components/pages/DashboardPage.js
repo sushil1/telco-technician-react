@@ -32,9 +32,6 @@ class DashboardPage extends React.Component {
 						{!isAdmin &&
 							!isTechnician && (
 								<Menu>
-									<Menu.Item>
-										<h2> Users Menu </h2>
-									</Menu.Item>
 									<Menu.Item as={NavLink} exact to="/dashboard/myquotes">
 										My Quotes
 									</Menu.Item>

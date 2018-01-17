@@ -10,6 +10,8 @@ import {
 	Popup, Grid, Label
 } from 'semantic-ui-react';
 import { CreateTicketPage } from '../pages';
+import { TicketStatusLabel } from '../labels';
+
 import {
 	fetchAllTickets,
 	updateTicket,
@@ -79,63 +81,9 @@ class MyTicketList extends React.Component {
 		this.props.updateTicket(id, args);
 	};
 
-	renderLabel(data){
-		let colorName;
-		let iconName;
-			switch(data){
-				case 'assigned':
-				return {
-					colorName:'teal',
-					iconName:'user'
-				}
-				case 'on the way':
-				return {
-					colorName:'green',
-					iconName:'road'
-				}
-				case 'at the site':
-				return {
-					colorName:'olive',
-					iconName:'home'
-				}
-				case 'completed':
-				return {
-					colorName:'blue',
-					iconName:'checkmark'
-				}
-				case 'incomplete':
-				return {
-					colorName:'black',
-					iconName:'close'
-				}
-				case 'cancelled':
-				return {
-					colorName:'red',
-					iconName:'close'
-				}
-				case 'postponed':
-				return {
-					colorName:'grey',
-					iconName:'wait'
-				}
-
-
-				default:
-				return {
-					colorName:'grey',
-					iconName:'lab'
-				}
-			}
-	}
-
-
-
 	render() {
 		const tickets = Object.values(this.state.data);
 		const { loading, activeIndex, popOverloading } = this.state;
-		const TicketLabel = ({colorName, iconName}) => (
-			<Label corner='right' color={colorName}><Icon name={iconName} /></Label>
-		)
 
 
 		return (
@@ -159,7 +107,7 @@ class MyTicketList extends React.Component {
 
 									</Card.Header>
 
-									<TicketLabel {...this.renderLabel(ticket.jobStatus.name)}/>
+									<TicketStatusLabel type={ticket.jobStatus.name}/>
 
 									<Card.Content>{ticket.service.name}</Card.Content>
 									<Card.Meta>

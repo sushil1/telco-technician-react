@@ -18,7 +18,8 @@ import {
 	ServicesPage,
 	FaqPage,
 	ShowServicePage,
-	ServiceBookingPage
+	ServiceBookingPage,
+	BookingTrackerPage
 } from './components/pages';
 import {
 	TopNavigation,
@@ -26,15 +27,18 @@ import {
 	SidebarNavigation
 } from './components/navigation';
 
+
 class App extends React.Component {
+
+
 
 	componentDidMount(){
 		if(this.props.isAuthenticated)this.props.fetchCurrentUser()
 	}
 
-
 	render() {
 		const { location, isAuthenticated, loaded } = this.props;
+
 
 		return (
 			<div>
@@ -66,6 +70,7 @@ class App extends React.Component {
 						</Grid.Row>
 
 						<Grid.Row only="computer" style={{ paddingBottom: '0' }}>
+
 							<Grid.Column width={16}>
 								<TopNavigation location={location} isAuthenticated={isAuthenticated}/>
 							</Grid.Column>
@@ -77,8 +82,8 @@ class App extends React.Component {
 							</Grid.Column>
 						</Grid.Row>
 
-
 						<Route path="/" exact component={HomePage} location={location} />
+
 
 						<Route
 							path="/quote"
@@ -127,6 +132,7 @@ class App extends React.Component {
 						/>
 
 						<Route location={location} path="/faq" exact component={FaqPage} />
+						<Route location={location} path="/tracker" exact component={BookingTrackerPage} />
 
 						<UserRoute
 							path="/dashboard"

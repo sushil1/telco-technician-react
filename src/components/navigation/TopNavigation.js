@@ -1,11 +1,10 @@
 import React from 'react';
-import { Menu, Dropdown, Image, Header, Popup } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Header } from 'semantic-ui-react';
 import { NavLink, Link } from 'react-router-dom';
 import Gravatar from 'react-gravatar'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/auth';
-import {BookingTrackerForm} from '../forms'
 
 
 
@@ -39,15 +38,9 @@ const TopNavigation = ({ isAuthenticated, logout, currentUser }) => (
 			Quick Quote
 		</Menu.Item>
 
+		<Menu.Item as={NavLink} to='/tracker'>Track Your Booking</Menu.Item>
 
 
-		<Popup
-    trigger={<Menu.Item as={NavLink} to='/tracker'>Track Your Booking</Menu.Item>}
-    flowing
-    on="click"
-  >
-    <BookingTrackerForm/>
-  </Popup>
 
 
 

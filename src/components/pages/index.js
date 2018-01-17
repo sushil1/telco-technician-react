@@ -12,6 +12,7 @@ import ShowServicePage from './ShowServicePage';
 import ServiceBookingPage from './ServiceBookingPage';
 import ProfilePage from './ProfilePage';
 import CreateTicketPage from './CreateTicketPage';
+import BookingTrackerPage from './BookingTrackerPage';
 
 export {
 	HomePage,
@@ -27,5 +28,6 @@ export {
 	ShowServicePage,
 	ServiceBookingPage,
 	ProfilePage,
-	CreateTicketPage
+	CreateTicketPage,
+	BookingTrackerPage
 };

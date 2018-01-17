@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {Card, Button, Label} from 'semantic-ui-react'
+import {Card, Button} from 'semantic-ui-react'
 
 
 

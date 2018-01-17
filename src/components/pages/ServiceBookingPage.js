@@ -68,9 +68,8 @@ class ServiceBookingPage extends React.Component {
 							/>
 							<Segment inverted>
 								<span>
-									We confirm your booking and work to solve your problems right
-									away!
-								</span>{' '}
+									We will confirm your booking right away and start to work on solving your problems!
+								</span><br/>
 								<Link to="/signup">
 									Sign up with us to track your bookings.
 								</Link>
