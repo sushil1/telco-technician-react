@@ -72,7 +72,7 @@ const HomePage = () => (
 			</Grid.Column>
 		</Grid.Row>
 
-	<Grid.Row centered={true} divided padded style={{marginBottom:'20px', marginTop:'20px'}}>
+	<Grid.Row centered={true} divided padded='true' style={{marginBottom:'20px', marginTop:'20px'}}>
 
 
     <Grid.Column mobile={14} tablet={5} computer={5} style={{paddingTop:'15px'}}>
