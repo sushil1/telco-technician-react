@@ -44,6 +44,7 @@ const HomePage = () => (
 					style={{
 						fontSize: '1.5em',
 						fontWeight: 'normal',
+						marginTop:'0px',
 						marginBottom: '0.5em',
 						color: '#fff',
 						margin:'auto',
@@ -51,19 +52,15 @@ const HomePage = () => (
 						textAlign:'center'
 					}}>
 					Best telecom technicians in Sydney. <br/>
-					We will fix your phone lines, ADSL, internet, internal wiring issues within next 24 hour.<br/>
-					 Let us get you back up and running.
+					We fix your phone lines, ADSL, internet, internal wiring issues within next 24 hour.<br/>
 				</p>
 				<div style={{ margin: 'auto', textAlign: 'center' }}>
 					<Button
-
-
 						color="teal"
 						style={{
 							fontSize: '1.5em',
 							width: '100%',
 							margin: 'auto',
-
 							letterSpacing: '0.1em'
 						}} as={Link} to='/book'>
 						BOOK US NOW
@@ -83,7 +80,7 @@ const HomePage = () => (
 
 			</Header>
 
-        <p>Book us to fix your internet or ADSL issues to be fixed withing 24 hours.</p>
+        <p>Book online or call us to fix your internet or ADSL issues within 24 hours.</p>
 
     </Grid.Column>
 
@@ -120,23 +117,23 @@ const HomePage = () => (
 	<Carousel emulateTouch={true} infiniteLoop={true} showStatus={false} showThumbs={false}>
 
 		 <div style={{height:'200px', backgroundColor:'teal'}}>
-				 <h3 style={{paddingTop:'2em'}}>Qualified</h3>
-				 <p style={{ paddingTop:'2em', textAlign:'center', width:'90%', margin:'auto'}}>We were having issues with the noisy line for months, Telco Technician fixed it in an hour.</p>
+
+				 <p style={{ paddingTop:'2em', fontSize: '1.3em', textAlign:'center', width:'90%', margin:'auto'}}>We were having issues with the noisy line for months, Telco Technician fixed it in an hour.</p>
 				 <br /> Peter, Dee Why
 		 </div>
 		 <div style={{height:'200px', backgroundColor:'teal'}}>
-				 <h3 style={{paddingTop:'2em'}}>Fantastic Job</h3>
-				 <p style={{ paddingTop:'2em', textAlign:'center', width:'90%', margin:'auto'}}>I highly recommend your technicians, they are very good at their job. They know what they are doing. Honest and reliable. Thanks.</p>
+
+				 <p style={{ paddingTop:'2em', fontSize: '1.3em', textAlign:'center', width:'90%', margin:'auto'}}>I highly recommend your technicians, they are very good at their job. They know what they are doing. Honest and reliable. Thanks.</p>
 				 <br /> Sarah, French Forest
 		 </div>
 		 <div style={{height:'200px', backgroundColor:'teal', margin:'auto'}}>
-				 <h3 style={{paddingTop:'2em'}}>Great Service</h3>
-				 <p style={{ paddingTop:'2em', textAlign:'center', width:'90%', margin:'auto'}}>Telco Technician are professional bunch of technicians, they deliver what they promise. Thanks guys.</p>
+
+				 <p style={{ paddingTop:'2em', fontSize: '1.3em', textAlign:'center', width:'90%', margin:'auto'}}>Telco Technician are professional bunch of technicians, they deliver what they promise. Thanks guys.</p>
 				 <br /> Naresh, Auburn
 		 </div>
 		 <div style={{height:'200px', backgroundColor:'teal'}}>
-				 <h3 style={{paddingTop:'2em'}}>Fast</h3>
-				 <p style={{ paddingTop:'2em', textAlign:'center', width:'90%', margin:'auto'}}>Telco Technician fixed my MDF jumpering and internal wiring in just two hours, what seemed like a whole day job. <br/>They would not rest until they solve the problem.</p>
+
+				 <p style={{ paddingTop:'2em', fontSize: '1.3em', textAlign:'center', width:'90%', margin:'auto'}}>Telco Technician fixed my MDF jumpering and internal wiring in just two hours, what seemed like a whole day job. <br/>They would not rest until they solve the problem.</p>
 				 <br /> Jeff, Rockdale
 		 </div>
 	</Carousel>

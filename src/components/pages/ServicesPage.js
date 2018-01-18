@@ -4,31 +4,24 @@ import PropTypes from 'prop-types';
 import { Message, Icon } from 'semantic-ui-react';
 import { fetchAll } from '../../actions/services';
 import { ServicesList } from '../lists';
+import Loader from 'react-loader'
 
 class ServicesPage extends React.Component {
-	state = {
-		loading: true
-	};
+
 
 	componentDidMount() {
 		if (Object.keys(this.props.services).length === 0) {
-			this.props.fetchAll().then(() => this.setState({ loading: false }));
-		} else {
-			this.setState({ loading: false });
+			this.props.fetchAll()
 		}
 	}
 
 	render() {
+		const {loaded} = this.props
 		return (
 			<div>
-				{this.state.loading ? (
-					<Message icon>
-						<Icon name="circle notched" loading />
-						Loading services
-					</Message>
-				) : (
+				<Loader loaded={loaded}>
 					<ServicesList services={this.props.services} />
-				)}
+				</Loader>
 			</div>
 		);
 	}
@@ -36,7 +29,8 @@ class ServicesPage extends React.Component {
 
 function stateToProps(state) {
 	return {
-		services: state.service.list
+		services: state.service.list,
+		loaded: state.service.loaded
 	};
 }
 
@@ -46,7 +40,8 @@ ServicesPage.propTypes = {
 };
 
 ServicesPage.defaultProps = {
-	services: {}
+	services: {},
+
 };
 
 export default connect(stateToProps, { fetchAll })(ServicesPage);
