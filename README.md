@@ -1,7 +1,18 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-## Project Development Steps
+## How to Run
 
-* Create React App
-* Install and setup eslint and prettier packages
-* Install and setup react router dom
+* git clone
+* yarn install
+* yarn start
+* Runs on localhost:5000
+
+#User Story
+Customers and staffs can login and signup
+Email notification and confirmation is now just tested with mailtrap.io
+Users can book, request a quote and track the status of their order without authentication.
+Admin routes will allow admin to manage all crud operations on the resources.
+Admin can assign the tickets to the technicians
+Technicians/staff will be able to accept and update their tickets.
+
+## Demo
