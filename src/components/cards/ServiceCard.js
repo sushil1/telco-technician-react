@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import truncateText from '../../utils/truncateText';
 
 const ServiceCard = ({ service }) => (
-	<Grid.Column mobile={16} tablet={5} computer={4}>
+	<Grid.Column mobile={16} tablet={5} computer={5}>
 		<Card raised as={Link} to={`/services/${service._id}`} centered
-			style={{ margin:'auto'}}
+			style={{ margin:'auto'}} color='teal'
 		>
 			<Image src="http://via.placeholder.com/200x200" />
 			<Card.Content>

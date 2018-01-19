@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Message, Icon } from 'semantic-ui-react';
 import { fetchAll } from '../../actions/services';
 import { ServicesList } from '../lists';
 import Loader from 'react-loader'
