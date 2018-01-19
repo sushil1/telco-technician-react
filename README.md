@@ -27,4 +27,4 @@ Technicians/staff will be able to accept and update their tickets.
 
 ## Demo
 
-<img src="https://res.cloudinary.com/snapshot/video/upload/v1516340974/telco-git_eswh3m.mp4" />
+<video src="https://res.cloudinary.com/snapshot/video/upload/v1516340974/telco-git_eswh3m.mp4" />
