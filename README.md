@@ -22,10 +22,8 @@ Technicians/staff will be able to accept and update their tickets.
 <img src="https://i.imgflip.com/22yhi1.gif" />
 
 ## Demo 3
-<img src="https://i.imgflip.com/gif/22yhnf"/>
+<img src="https://i.imgflip.com/22yipv.gif" />
 
-
-## Demo
 
 <video width="320" height="240" controls>
   <source src="https://res.cloudinary.com/snapshot/video/upload/v1516340974/telco-git_eswh3m.mp4" type="video/mp4">
