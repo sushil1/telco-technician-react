@@ -15,4 +15,11 @@ Admin routes will allow admin to manage all crud operations on the resources.
 Admin can assign the tickets to the technicians
 Technicians/staff will be able to accept and update their tickets.
 
-## Demo
+## Demo 1
+<img src="https://i.imgflip.com/22yhcz.gif" title="telco-demo-1"/>
+
+## Demo 2
+<img src="https://i.imgflip.com/22yhi1.gif" title="telco-demo-2"/>
+
+## Demo 3
+<img src="https://imgflip.com/gif/22yhnf" title="telco-demo-3"/>
