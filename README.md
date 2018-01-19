@@ -16,10 +16,15 @@ Admin can assign the tickets to the technicians
 Technicians/staff will be able to accept and update their tickets.
 
 ## Demo 1
-<img src="https://i.imgflip.com/22yhcz.gif" title="telco-demo-1"/>
+<img src="https://i.imgflip.com/22yhcz.gif" />
 
 ## Demo 2
-<img src="https://i.imgflip.com/22yhi1.gif" title="telco-demo-2"/>
+<img src="https://i.imgflip.com/22yhi1.gif" />
 
 ## Demo 3
-<img src="https://imgflip.com/gif/22yhnf" title="telco-demo-3"/>
+<img src="https://imgflip.com/gif/22yhnf"/>
+
+
+## Demo
+
+<img src="https://res.cloudinary.com/snapshot/video/upload/v1516340974/telco-git_eswh3m.mp4" />
