@@ -16,7 +16,7 @@ Admin can assign the tickets to the technicians
 Technicians/staff will be able to accept and update their tickets.
 
 ## Demo 1
-<img width='450px' height="400px" src="https://i.imgflip.com/22yhcz.gif" />
+<img width='500px' height="400px" src="https://i.imgflip.com/22yhcz.gif" />
 
 ## Demo 2
 <img width='450px' height="400px" src="https://i.imgflip.com/22yhi1.gif" />
