@@ -18,54 +18,69 @@ const HomePage = () => (
 			paddingRight: '20px',
 			marginTop: '0px'
 		}}>
-		<Grid.Row centered={true} style={{ height: '550px', paddingTop: '0', paddingBottom:'0px' }}>
+		<Grid.Row centered={true} style={{ minHeight: '500px', paddingTop: '0', paddingBottom:'0px' }}>
 			<Grid.Column
 				stretched
 				width={16}
 				textAlign="center"
 				style={{
-					backgroundColor:'black',
+					backgroundColor:'teal',
 					backgroundSize: 'cover',
-					boxShadow: 'inset 0px 0px 400px 110px rgba(0, 0, 0, .7)',
-					color: '#fff'
+					boxShadow: ' 0px 0px 1px 0px rgba(0, 0, 0, .7)',
+					color: '#fff',
+					paddingTop:'4em'
 				}}>
-				<h5
-					style={{
-						fontSize:'1.8em',
-						fontWeight: 'normal',
-						marginTop: '3em',
-						color: '#fff',
-						letterSpacing: '0.2em',
 
-					}}>
-					TELCO TECHNICIAN
-				</h5>
+
 				<p
 					style={{
 						fontSize: '1.5em',
 						fontWeight: 'normal',
-						marginTop:'0px',
-						marginBottom: '0.5em',
-						color: '#fff',
+						marginTop:'3em',
+
+						color: '#000',
 						margin:'auto',
-						width:'80%',
+						width:'90%',
 						textAlign:'center'
 					}}>
-					Best telecom technicians in Sydney. <br/>
-					We fix your phone lines, ADSL, internet, internal wiring issues within next 24 hour.<br/>
-				</p>
-				<div style={{ margin: 'auto', textAlign: 'center' }}>
-					<Button
-						color="teal"
+						<span
 						style={{
-							fontSize: '1.5em',
-							width: '100%',
-							margin: 'auto',
-							letterSpacing: '0.1em'
-						}} as={Link} to='/book'>
-						BOOK US NOW
-					</Button>
-				</div>
+							display:'block',
+							fontSize:'1em',
+							paddingBottom: '1.5em',
+							color: '#000',
+							letterSpacing: '0.2em',
+
+						}}
+						 >
+							TELCO TECHNICIAN
+
+						</span>
+						Are you experiencing... <br />
+					 <strong>Noisy Phone Line</strong>,  <strong>Internet Dropout Issues</strong>, <strong>ADSL Faults</strong>, <br /><strong>Faulty Aerial/Lead-in Cable</strong>, <strong>Internal Wiring Issues</strong> ?
+					<br/>
+					<br />
+					Get it fixed within 24 hour !
+						<br />
+
+						<Button
+							inverted
+							color="black"
+							style={{
+								fontSize: '1em',
+								color:'white',
+								margin: 'auto',
+								marginTop:'2.5em',
+								letterSpacing: '0.1em',
+								boxShadow: ' 0px 1px 2px 0px rgba(0, 0, 0, .7)',
+							}} as={Link} to='/book'>
+							BOOK US NOW
+						</Button>
+
+
+				</p>
+
+
 			</Grid.Column>
 		</Grid.Row>
 

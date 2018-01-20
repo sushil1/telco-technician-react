@@ -84,7 +84,7 @@ class App extends React.Component {
 
 						<Route path="/" exact component={HomePage} location={location} />
 
-
+						<Grid.Row style={{marginTop:'10px'}} />
 						<Route
 							path="/quote"
 							exact

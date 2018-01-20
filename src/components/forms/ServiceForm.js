@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Message, Dropdown, Segment } from 'semantic-ui-react';
+import { Form, Message, Dropdown } from 'semantic-ui-react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import isEmail from 'validator/lib/isEmail';
@@ -89,12 +89,12 @@ class ServiceForm extends Component {
 	};
 
 	render() {
-		
+
 		const { data, errors, loading } = this.state;
 		const defaultService = this.props.serviceId
 		const serviceOptions = this.props.serviceOptions;
 		return (
-			<Segment>
+
 				<Form onSubmit={this.onSubmit} loading={loading}>
 					{!!errors.global && (
 						<Message negative>
@@ -226,7 +226,7 @@ class ServiceForm extends Component {
 						</a>
 					</div>
 				</Form>
-			</Segment>
+
 		);
 	}
 }

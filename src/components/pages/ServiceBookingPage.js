@@ -5,8 +5,7 @@ import {
 	Message,
 	Icon,
 	Grid,
-	Segment,
-	Divider
+	Segment
 } from 'semantic-ui-react';
 import { ServiceForm } from '../forms';
 import { bookService } from '../../actions/bookings';
@@ -56,10 +55,9 @@ class ServiceBookingPage extends React.Component {
 						{messageComponent}
 					</Grid.Column>
 				) : (
-					<Grid.Column mobile={14} tablet={10} computer={8}>
+					<Grid.Column mobile={14} tablet={10} computer={8} >
 						<Segment raised color="teal">
-							<h4>Book Service</h4>
-							<Divider />
+
 							<ServiceForm
 								submit={this.submit}
 								serviceOptions={this.props.serviceOptions}

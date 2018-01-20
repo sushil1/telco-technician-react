@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import ReactImageFallback from 'react-image-fallback'
 
 const ServiceDetail = ({ service }) => (
-	<Grid.Row style={{marginTop:'30px'}}>
+	<Grid.Row>
 	<Grid.Column mobile={16} tablet={8} computer={8}>
 		<Header as="h2">
 			<Header.Content>{service.name}</Header.Content>
@@ -66,9 +66,9 @@ const ServiceDetail = ({ service }) => (
 		<Header sub>Our stats</Header>
 		<Divider />
 	</Grid.Column>
-	<Grid.Column mobile={0} tablet={2} computer={2}>
+	<Grid.Column mobile={0} tablet={1} computer={2}>
 	</Grid.Column>
-	<Grid.Column mobile={16} tablet={6} computer={6} style={{marginTop:'30px'}}>
+	<Grid.Column mobile={16} tablet={7} computer={6} style={{marginTop:'30px'}}>
 
 
 		<Segment  fluid>

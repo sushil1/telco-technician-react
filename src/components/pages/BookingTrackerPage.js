@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, Card, Icon, Label} from 'semantic-ui-react'
+import {Grid, Card, Icon, Label, Segment} from 'semantic-ui-react'
 import moment from 'moment'
 import {connect} from 'react-redux'
 import {trackBooking} from '../../actions/tickets'
@@ -28,7 +28,9 @@ class BookingTrackerPage extends React.Component{
     return(
       <Grid.Row centered>
         <Grid.Column mobile={14} tablet={10} computer={8}>
+        <Segment color='teal'>
         <BookingTrackerForm submit={this.trackBooking}/>
+        </Segment>
       </Grid.Column>
         {this.state.trackedTicket && (
           <Grid.Column mobile={14} tablet={10} computer={6}>
