@@ -25,7 +25,7 @@ class SidebarNavigation extends Component {
 						{visible ? (
 							<Icon name="remove" size="large"/>
 						) : (
-							<Icon name="tasks" size="large" />
+							<Icon name="sidebar" size="large" />
 						)}
 					</Menu.Item>
 				</Menu>
@@ -71,7 +71,7 @@ class SidebarNavigation extends Component {
 						onClick={() => this.toggleVisibility()}>
 						Quick Quote
 					</Menu.Item>
-					
+
 					{isAuthenticated && (
 						<Menu.Item
 							as={Link}
