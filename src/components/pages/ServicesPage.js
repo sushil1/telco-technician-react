@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { fetchAll } from '../../actions/services';
 import { ServicesList } from '../lists';
 import Loader from 'react-loader'
+import {Message} from 'semantic-ui-react'
 
 class ServicesPage extends React.Component {
 
@@ -15,11 +16,12 @@ class ServicesPage extends React.Component {
 	}
 
 	render() {
-		const {loaded} = this.props
+		const {loaded, services} = this.props
 		return (
 			<div>
 				<Loader loaded={loaded}>
-					<ServicesList services={this.props.services} />
+					{Object.keys(services).length === 0 && <Message>Error fetching services. Try Again.</Message> }
+					<ServicesList services={services} />
 				</Loader>
 			</div>
 		);
@@ -39,8 +41,7 @@ ServicesPage.propTypes = {
 };
 
 ServicesPage.defaultProps = {
-	services: {},
-
+	services: {}
 };
 
 export default connect(stateToProps, { fetchAll })(ServicesPage);
