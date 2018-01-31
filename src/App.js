@@ -5,6 +5,7 @@ import { UserRoute, GuestRoute } from './components/routes';
 import { Grid, Button } from 'semantic-ui-react';
 import {connect} from 'react-redux'
 import {fetchCurrentUser} from './actions/users'
+import {fetchAll} from './actions/services'
 import Loader from 'react-loader'
 import {
 	HomePage,
@@ -29,16 +30,15 @@ import {
 
 
 class App extends React.Component {
-
-
-
 	componentDidMount(){
 		if(this.props.isAuthenticated)this.props.fetchCurrentUser()
+		if(this.props.serviceOptions.length === 0){
+			this.props.fetchAll()
+		}
 	}
 
 	render() {
-		const { location, isAuthenticated, loaded } = this.props;
-
+		const { location, isAuthenticated, loaded, serviceOptions } = this.props;
 
 		return (
 			<div>
@@ -72,7 +72,7 @@ class App extends React.Component {
 						<Grid.Row only="computer" style={{ paddingBottom: '0' }}>
 
 							<Grid.Column width={16}>
-								<TopNavigation location={location} isAuthenticated={isAuthenticated}/>
+								<TopNavigation location={location} isAuthenticated={isAuthenticated} serviceOptions={serviceOptions}/>
 							</Grid.Column>
 						</Grid.Row>
 
@@ -185,10 +185,16 @@ App.propTypes = {
 
 function stateToProps(state){
 	const currentUser = state.user.currentUser? state.user.currentUser.email : false
+	const service = state.service.list
+	const options = Object.values(service).map(item => ({
+		key: item._id,
+		text: item.name
+	}));
 	return{
 		isAuthenticated: !!currentUser,
-		loaded:state.user.loaded
+		loaded:state.user.loaded,
+		serviceOptions: options
 	}
 }
 
-export default connect(stateToProps, {fetchCurrentUser})(App);
+export default connect(stateToProps, {fetchCurrentUser, fetchAll})(App);

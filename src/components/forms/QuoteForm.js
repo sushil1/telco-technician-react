@@ -88,7 +88,7 @@ class QuoteForm extends Component {
 						<input
 							name="address"
 							type="text"
-							placeholder="Enter your address"
+							placeholder="Enter your address, street, suburb"
 							value={data.address}
 							onChange={this.onChange}
 						/>

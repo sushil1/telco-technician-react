@@ -22,9 +22,15 @@ export default (state = initialState, action = {}) => {
 
 			return updated;
 		case SERVICE_SELECTED:
-			updated['selected'] = action.service;
-			updated['loaded'] = true
-			return updated;
+			if(updated['selected']['_id'] !== action.service._id){
+				updated['selected'] = action.service;
+				updated['loaded'] = true
+				return updated;
+			}else{
+				return updated
+			}
+
+
 
 		default:
 			return state;

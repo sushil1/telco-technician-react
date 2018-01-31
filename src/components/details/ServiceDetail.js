@@ -3,6 +3,16 @@ import { Header, Divider, Icon, Grid, List, Button, Segment, Label} from 'semant
 import { Link } from 'react-router-dom';
 import ReactImageFallback from 'react-image-fallback'
 
+
+//react fallback image code
+// <ReactImageFallback
+// 			src={service.thumbnail}
+// 			fallbackImage='http://via.placeholder.com/450x350'
+// 			alt='Thumbnail'
+// 			className='ui image'
+// 		/>
+// <br />
+
 const ServiceDetail = ({ service }) => (
 	<Grid.Row>
 	<Grid.Column mobile={16} tablet={8} computer={8}>
@@ -18,32 +28,11 @@ const ServiceDetail = ({ service }) => (
 		<List>
 			<List.Item>
 				<Icon name="right triangle" />
-				Inline Text
+				We fix your service
 			</List.Item>
 			<List.Item>
 				<Icon name="right triangle" />
-				Inline Text 2
-			</List.Item>
-			<List.Item>
-				<Icon name="right triangle" />
-				Inline Text 3
-			</List.Item>
-		</List>
-
-		<Header sub>Usual Issues</Header>
-		<Divider />
-		<List>
-			<List.Item>
-				<Icon name="right triangle" />
-				Inline Text
-			</List.Item>
-			<List.Item>
-				<Icon name="right triangle" />
-				Inline Text 2
-			</List.Item>
-			<List.Item>
-				<Icon name="right triangle" />
-				Inline Text 3
+				Small replacement items are included
 			</List.Item>
 		</List>
 
@@ -52,19 +41,15 @@ const ServiceDetail = ({ service }) => (
 		<List>
 			<List.Item>
 				<Icon name="right triangle" />
-				Might need to access your home
+				Might need to access your home/office
 			</List.Item>
 			<List.Item>
 				<Icon name="right triangle" />
 				Might need to access your roof
 			</List.Item>
-			<List.Item>
-				<Icon name="right triangle" />
-				Inline Text 3
-			</List.Item>
+
 		</List>
-		<Header sub>Our stats</Header>
-		<Divider />
+
 	</Grid.Column>
 	<Grid.Column mobile={1} tablet={1} computer={2}>
 	</Grid.Column>
@@ -72,13 +57,7 @@ const ServiceDetail = ({ service }) => (
 
 
 		<Segment>
-		<ReactImageFallback
-					src={service.thumbnail}
-					fallbackImage='http://via.placeholder.com/450x350'
-					alt='Thumbnail'
-					className='ui image'
-				/>
-		<br />
+
 			<Button color='teal' fluid as={Link} to={`/book/${service._id}`}>
 				Book {service.name}
 			</Button>

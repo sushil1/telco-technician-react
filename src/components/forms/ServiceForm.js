@@ -150,7 +150,7 @@ class ServiceForm extends Component {
 						<input
 							name="address"
 							type="text"
-							placeholder="street"
+							placeholder="Enter your address, street, suburb"
 							value={data.address}
 							onChange={this.handleStringChange}
 						/>

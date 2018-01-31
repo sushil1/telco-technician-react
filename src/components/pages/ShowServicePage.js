@@ -10,16 +10,17 @@ class ShowServicePage extends React.Component {
 		service: {}
 	};
 
-	componentDidMount() {
+	fetchService = (id) => {
 		if (Object.keys(this.props.service).length === 0) {
-			this.props.fetchById(this.props.match.params._id).then(item =>
+			this.props.fetchById(id).then(item =>{
+				this.props.serviceSelected(item.service)
 				this.setState({
 					loading: false,
 					service: item.service
 				})
-			);
+			})
 		} else {
-			const service = this.props.service[this.props.match.params._id];
+			const service = this.props.service[id];
 			this.props.serviceSelected(service);
 			this.setState({
 				loading: false,
@@ -27,6 +28,19 @@ class ShowServicePage extends React.Component {
 			});
 		}
 	}
+
+	componentDidMount() {
+		this.fetchService(this.props.match.params._id)
+	}
+
+	componentWillReceiveProps(nextProps){
+		if(this.props.match.params._id !== nextProps.match.params._id){
+			this.fetchService(nextProps.match.params._id)
+		}
+
+	}
+
+
 
 	render() {
 		const { loading } = this.state;

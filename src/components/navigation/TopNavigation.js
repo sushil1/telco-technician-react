@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Dropdown, Image, Header } from 'semantic-ui-react';
+import { Menu, Dropdown, Image, Popup, Header, Grid } from 'semantic-ui-react';
 import { NavLink, Link } from 'react-router-dom';
 import Gravatar from 'react-gravatar'
 import PropTypes from 'prop-types';
@@ -15,71 +15,91 @@ const showGravatar = currentUser => {
 	return 'jpt@gmail.com';
 };
 
-const TopNavigation = ({ isAuthenticated, logout, currentUser }) => (
-	<Menu inverted>
-		<Menu.Item as={NavLink} exact to="/">
-			<Header inverted>
-				Telco Technician
-			</Header>
-		</Menu.Item>
+class TopNavigation extends React.Component{
 
-		{isAuthenticated && (
-			<Menu.Item as={NavLink} exact to="/dashboard">
-				Dashboard
-			</Menu.Item>
-		)}
-		<Menu.Item as={NavLink} exact to="/services">
-			Services
-		</Menu.Item>
-		<Menu.Item as={NavLink} exact to="/book">
-			Book Us
-		</Menu.Item>
-		<Menu.Item as={NavLink} exact to="/quote">
-			Quick Quote
-		</Menu.Item>
-
-		<Menu.Item as={NavLink} to='/tracker'>Track Your Booking</Menu.Item>
-
-
-
-
-
-
-		{isAuthenticated ? (
-			<Menu.Menu position="right">
-				<Dropdown
-					trigger={
-						<Image
-							avatar
-
-							style={{ marginTop: '10px' }}
-						>{<Gravatar email={showGravatar(currentUser)} default="mm"/> }</Image>
-					}>
-					<Dropdown.Menu>
-						<Dropdown.Item as={Link} to="/" onClick={() => logout()}>
-							Logout
-						</Dropdown.Item>
-						<Dropdown.Item>Profile</Dropdown.Item>
-					</Dropdown.Menu>
-				</Dropdown>
-			</Menu.Menu>
-		) : (
-			<Menu.Menu position="right">
-				<Menu.Item as={NavLink} exact to="/login">
-					Login
+	render(){
+		const { isAuthenticated, logout, currentUser, serviceOptions } = this.props
+		return(
+			<Menu inverted>
+				<Menu.Item as={NavLink} exact to="/">
+					<Header inverted>
+						Telco Technician
+					</Header>
 				</Menu.Item>
-				<Menu.Item as={NavLink} exact to="/signup">
-					Signup
+
+				{isAuthenticated && (
+					<Menu.Item as={NavLink} exact to="/dashboard">
+						Dashboard
+					</Menu.Item>
+				)}
+
+					<Popup
+					trigger={<Menu.Item>
+						Services
+						</Menu.Item>}
+						flowing
+						hoverable
+						 >
+							<Grid centered divided columns={6}>
+								{serviceOptions.map((item) => (
+									<Grid.Column column={2} key={item.key} as={Link} to={`/services/${item.key}`}>
+											<strong style={{color:'black'}}>{item.text}</strong>
+									</Grid.Column>
+								))}
+						</Grid>
+				</Popup>
+
+
+				<Menu.Item as={NavLink} exact to="/book">
+					Book Us
 				</Menu.Item>
-			</Menu.Menu>
-		)}
-	</Menu>
-);
+				<Menu.Item as={NavLink} exact to="/quote">
+					Quick Quote
+				</Menu.Item>
+
+				<Menu.Item as={NavLink} to='/tracker'>Track Your Booking</Menu.Item>
+
+
+				{isAuthenticated ? (
+					<Menu.Menu position="right">
+						<Dropdown
+							trigger={
+								<Image
+									avatar
+									style={{ marginTop: '10px' }}
+								>{<Gravatar email={showGravatar(currentUser)} default="mm"/> }</Image>
+							}>
+							<Dropdown.Menu>
+								<Dropdown.Item as={Link} to="/" onClick={() => logout()}>
+									Logout
+								</Dropdown.Item>
+								<Dropdown.Item>Profile</Dropdown.Item>
+							</Dropdown.Menu>
+						</Dropdown>
+					</Menu.Menu>
+				) : (
+					<Menu.Menu position="right">
+						<Menu.Item as={NavLink} exact to="/login">
+							Login
+						</Menu.Item>
+						<Menu.Item as={NavLink} exact to="/signup">
+							Signup
+						</Menu.Item>
+					</Menu.Menu>
+				)}
+			</Menu>
+		)
+	}
+
+
+}
+
+
 
 function stateToProps(state) {
 	const user = state.user;
 	return {
-		currentUser: user.currentUser
+		currentUser: user.currentUser,
 	};
 }
 
