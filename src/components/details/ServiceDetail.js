@@ -66,12 +66,12 @@ const ServiceDetail = ({ service }) => (
 		<Header sub>Our stats</Header>
 		<Divider />
 	</Grid.Column>
-	<Grid.Column mobile={0} tablet={1} computer={2}>
+	<Grid.Column mobile={1} tablet={1} computer={2}>
 	</Grid.Column>
 	<Grid.Column mobile={16} tablet={7} computer={6} style={{marginTop:'30px'}}>
 
 
-		<Segment  fluid>
+		<Segment>
 		<ReactImageFallback
 					src={service.thumbnail}
 					fallbackImage='http://via.placeholder.com/450x350'
@@ -86,7 +86,7 @@ const ServiceDetail = ({ service }) => (
 		</Segment>
 
 
-		<Segment  fluid>
+		<Segment >
 
 
 		<Header as='h5'>

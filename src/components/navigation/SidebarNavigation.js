@@ -4,6 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 
+
 class SidebarNavigation extends Component {
 	state = { visible: false };
 
@@ -23,6 +24,7 @@ class SidebarNavigation extends Component {
 
 					<Menu.Item position="right" onClick={() => this.toggleVisibility()}>
 						{visible ? (
+
 							<Icon name="remove" size="large"/>
 						) : (
 							<Icon name="sidebar" size="large" />

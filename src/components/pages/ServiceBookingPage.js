@@ -12,6 +12,7 @@ import { bookService } from '../../actions/bookings';
 import { fetchAll } from '../../actions/services';
 import { Link } from 'react-router-dom';
 
+
 class ServiceBookingPage extends React.Component {
 	state = {
 		showSucessMessage: false,
@@ -56,6 +57,8 @@ class ServiceBookingPage extends React.Component {
 					</Grid.Column>
 				) : (
 					<Grid.Column mobile={14} tablet={10} computer={8} >
+
+
 						<Segment raised color="teal">
 
 							<ServiceForm

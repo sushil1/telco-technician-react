@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Icon, Image, Grid } from 'semantic-ui-react';
+import adslPic from '../images/adsl-pic.png'
 
 import { Link } from 'react-router-dom';
 import truncateText from '../../utils/truncateText';
@@ -10,7 +11,10 @@ const ServiceCard = ({ service }) => (
 		<Card raised as={Link} to={`/services/${service._id}`} centered
 			style={{ margin:'auto'}} color='teal'
 		>
-			<Image src="http://via.placeholder.com/200x200" />
+
+			<Image src={adslPic} />
+
+
 			<Card.Content>
 				<Card.Header>{service.name}</Card.Header>
 				<Card.Description>

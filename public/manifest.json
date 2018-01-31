@@ -1,5 +1,5 @@
 {
-  "short_name": "Telco Technician",
+  "short_name": "TelcoTechnician",
   "name": "Telco Technician",
   "icons": [
     {
@@ -10,6 +10,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#1b1c1d",
+  "background_color": "#107f7f"
 }

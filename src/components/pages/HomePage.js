@@ -9,6 +9,8 @@ import iinet from '../images/telecom_vendors/iinet.png'
 import internode from '../images/telecom_vendors/internode.png'
 import {Carousel} from 'react-responsive-carousel'
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
 const HomePage = () => (
 	<Grid
 		stretched
@@ -19,6 +21,7 @@ const HomePage = () => (
 			marginTop: '0px'
 		}}>
 		<Grid.Row centered={true} style={{ minHeight: '500px', paddingTop: '0', paddingBottom:'0px' }}>
+
 			<Grid.Column
 				stretched
 				width={16}
@@ -31,7 +34,6 @@ const HomePage = () => (
 					paddingTop:'4em'
 				}}>
 
-
 				<p
 					style={{
 						fontSize: '1.5em',
@@ -43,6 +45,13 @@ const HomePage = () => (
 						width:'90%',
 						textAlign:'center'
 					}}>
+					<ReactCSSTransitionGroup
+						transitionName='telcoHeading'
+						transitionAppear={true}
+						transitionAppearTimeout={1000}
+						transitionEnter={false}
+						transitionLeave={false}
+					>
 						<span
 						style={{
 							display:'block',
@@ -51,17 +60,21 @@ const HomePage = () => (
 							color: '#000',
 							letterSpacing: '0.2em',
 
-						}}
-						 >
+						}} >
 							TELCO TECHNICIAN
 
 						</span>
+
+						</ReactCSSTransitionGroup>
+
 						Are you experiencing... <br />
 					 <strong>Noisy Phone Line</strong>,  <strong>Internet Dropout Issues</strong>, <strong>ADSL Faults</strong>, <br /><strong>Faulty Aerial/Lead-in Cable</strong>, <strong>Internal Wiring Issues</strong> ?
 					<br/>
 					<br />
 					Get it fixed within 24 hour !
 						<br />
+
+
 
 						<Button
 							inverted
@@ -74,10 +87,10 @@ const HomePage = () => (
 								letterSpacing: '0.1em',
 								boxShadow: ' 0px 1px 2px 0px rgba(0, 0, 0, .7)',
 							}} as={Link} to='/book'>
+
 							BOOK US NOW
+
 						</Button>
-
-
 				</p>
 
 
