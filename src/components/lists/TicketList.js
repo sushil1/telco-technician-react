@@ -184,12 +184,6 @@ class TicketList extends React.Component {
 						onClick={() => this.showUpdateTicketForm(null)}
 					/>
 
-					<Button
-						content="Find"
-						icon="search"
-						color="teal"
-						labelPosition="right"
-					/>
 
 					<Button
 						content={this.state.cardListView ? 'Show Table' : 'Show Cards'}

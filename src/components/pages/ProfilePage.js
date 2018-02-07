@@ -1,32 +1,41 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {Card, Button} from 'semantic-ui-react'
+import {Card, Button, Image, Form} from 'semantic-ui-react'
+import Gravatar from 'react-gravatar'
 
+const showGravatar = currentUser => {
+	if (currentUser.confirmed) {
+		return currentUser.email;
+	}
+	return 'jpt@gmail.com';
+};
 
 
 class ProfilePage extends React.Component{
 
-
 	render(){
 		const user = this.props.user
 		return(
-			<Card  style={{ marginLeft:'10%', marginTop:'50px',}}>
-
-
-      <Card.Header>
-        {user.email}
-      </Card.Header>
-      <Card.Meta>
-
-          {user.role}
-      </Card.Meta>
-
-
-    <Card.Content extra>
-      <div>
-				<Button fluid color='teal'>Edit Profile Info</Button>
-			</div>
-    </Card.Content>
+		<Card  style={{marginTop:'10px',}}>
+			<Card.Content>
+				<Image floated='right'
+					avatar
+				>{<Gravatar email={showGravatar(user)} default="mm"/> }</Image>
+				<Card.Header>
+	        {user.name}
+	      </Card.Header>
+			</Card.Content>
+			<Card.Content>
+				Email: {user.email}
+				<Card.Meta>
+						{user.role}
+				</Card.Meta>
+			</Card.Content>
+	    <Card.Content extra>
+	      <div>
+					<Button fluid color='teal'>Edit Profile Info</Button>
+				</div>
+	    </Card.Content>
   </Card>
 		)
 	}

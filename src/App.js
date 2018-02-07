@@ -84,6 +84,12 @@ class App extends React.Component {
 
 						<Route path="/" exact component={HomePage} location={location} />
 
+						<UserRoute
+							path="/dashboard"
+							component={DashboardPage}
+							location={location}
+						/>
+
 						<Grid.Row style={{marginTop:'10px'}} />
 						<Route
 							path="/quote"
@@ -108,9 +114,6 @@ class App extends React.Component {
 							)}
 						/>
 
-
-
-
 						<Route
 							location={location}
 							path="/confirmation/:token"
@@ -134,11 +137,6 @@ class App extends React.Component {
 						<Route location={location} path="/faq" exact component={FaqPage} />
 						<Route location={location} path="/tracker" exact component={BookingTrackerPage} />
 
-						<UserRoute
-							path="/dashboard"
-							component={DashboardPage}
-							location={location}
-						/>
 
 						<GuestRoute
 							path="/forgot_password"

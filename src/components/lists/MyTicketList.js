@@ -97,7 +97,7 @@ class MyTicketList extends React.Component {
 				)}
 
 
-				<Segment raised color="teal" loading={loading} centered>
+				<Segment raised color="teal" loading={loading}>
 
 					<Card.Group stackable style={{marginTop:'20px'}}>
 						{tickets.map((ticket, i) => (

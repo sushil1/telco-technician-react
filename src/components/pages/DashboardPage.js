@@ -25,7 +25,13 @@ class DashboardPage extends React.Component {
 	render() {
 		const { isConfirmed, isAdmin, isTechnician } = this.props;
 		return (
-			<Grid>
+			<Grid
+			style={{
+				marginRight:'5px',
+				marginLeft:'5px',
+				marginTop: '0px'
+			}}
+			>
 				<Grid.Row centered>
 					<Grid.Column width={16}>
 						{!isConfirmed && <ConfirmEmailMessage />}

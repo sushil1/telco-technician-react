@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Grid, Segment } from 'semantic-ui-react';
+import { Menu, Grid, Segment, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => (
@@ -15,6 +15,13 @@ const Footer = () => (
 				<Menu.Item as={Link} to="/quote">
 					Quick Quote
 				</Menu.Item>
+				<Menu.Menu position='right'>
+					<Menu.Item as={Link} target='_blank' to='https://www.facebook.com/telcotechnician/'>
+						<Icon inverted name='facebook' size='large' />
+					</Menu.Item>
+					<Menu.Item >
+					</Menu.Item>
+				</Menu.Menu>
 			</Menu>
 		</Grid.Row>
 		<br />
