@@ -24,12 +24,12 @@ class ServiceForm extends Component {
 		errors: {}
 	};
 
-	// componentDidMount() {
-	// 	this.props.serviceId &&
-	// 		this.setState({
-	// 			data: { ...this.state.data, service: this.props.serviceId }
-	// 		})
-	// }
+	componentDidMount() {
+		this.props.serviceId &&
+			this.setState({
+				data: { ...this.state.data, service: this.props.serviceId }
+			})
+	}
 
 	handleDateChange = date =>
 		this.setState({
@@ -182,13 +182,13 @@ class ServiceForm extends Component {
 								selected={data.date}
 								onSelect={this.handleDateSelect}
 								onChange={this.handleDateChange}
-								openToDate={moment()}
+								showTimeSelect
 								minDate={moment()}
 								maxDate={moment().add(14, 'days')}
-								showTimeSelect
 								placeholderText="Select date and time"
 								timeFormat="HH:mm"
 								timeIntervals={60}
+								locale="en-au"
 								minTime={moment()
 									.hours(8)
 									.minutes(0)}
@@ -196,10 +196,15 @@ class ServiceForm extends Component {
 									.hours(18)
 									.minutes(0)}
 								dateFormat="LLL"
+								disabledKeyboardNavigation
 							/>
 
 							{errors.date && <InlineError text={errors.date} />}
 						</Form.Field>
+
+
+
+
 					</Form.Group>
 
 					<Form.Field error={!!errors.message}>

@@ -5,7 +5,7 @@ import {
 	Message,
 	Icon,
 	Grid,
-	Segment
+	Segment,
 } from 'semantic-ui-react';
 import { ServiceForm } from '../forms';
 import { bookService } from '../../actions/bookings';
@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 class ServiceBookingPage extends React.Component {
 	state = {
 		showSucessMessage: false,
-		bookingRefrence:''
+		bookingOrder:''
 	};
 
 	componentDidMount() {
@@ -27,27 +27,29 @@ class ServiceBookingPage extends React.Component {
 	submit = data =>
 		this.props
 			.bookService(data)
-			.then((res) => this.setState({ bookingRefrence:res.booking.refrenceId, showSucessMessage: true}));
+			.then((res) => this.setState({ bookingOrder:res.booking.refrenceId, showSucessMessage: true}));
 
 	handleDismiss = () => {
-		this.setState({ showSucessMessage: false });
-		this.props.history.goBack();
+		this.setState({ showSucessMessage: false })
+		this.props.history.goBack()
 	};
 
 	render() {
-		const { showSucessMessage, bookingRefrence } = this.state;
+		const { showSucessMessage, bookingOrder} = this.state;
 
 		const messageComponent = (
-			<Message success icon floating>
-				<Icon name="check" tiny="true" />
+			<Message success icon floating
+				onDismiss={this.handleDismiss}
+				>
+				<Icon name="checkmark" tiny={"true"} />
 				<Message.Content>
 					<Message.Header>Booking Request Sent!</Message.Header>
+					Your refrence number is <strong>{bookingOrder}</strong>.
+					<br />
 					Our technician will contact you for confirmation.
-					Your refrence number is <strong>{bookingRefrence}</strong>
 				</Message.Content>
-				<Icon name="close" tiny="true" onClick={this.handleDismiss} />
 			</Message>
-		);
+		)
 
 		return (
 			<Grid.Row centered>
