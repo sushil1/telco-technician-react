@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {Card, Button, Image, Form} from 'semantic-ui-react'
+import {Card, Button, Image} from 'semantic-ui-react'
 import Gravatar from 'react-gravatar'
 
 const showGravatar = currentUser => {

@@ -1,9 +1,13 @@
+/*global google*/
 import React, { Component } from 'react';
 import { Form, Message, Dropdown } from 'semantic-ui-react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
+import PlacesAutocomplete from 'react-places-autocomplete'
+
 import isEmail from 'validator/lib/isEmail';
 import { InlineError } from '../messages';
+
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -88,11 +92,27 @@ class ServiceForm extends Component {
 		});
 	};
 
+	handleAddressChange = (address) => this.setState({
+			data: {...this.state.data, address}
+		})
+
+
 	render() {
 
 		const { data, errors, loading } = this.state;
 		const defaultService = this.props.serviceId
 		const serviceOptions = this.props.serviceOptions;
+		const addressInputProps = {
+			value: this.state.data.address,
+			onChange:this.handleAddressChange,
+			placeholder:'Enter your address..',
+		}
+		const addressOptions = {
+		  location: new google.maps.LatLng(-34, 151),
+		  radius: 50000,
+		  types: ['address']
+		}
+		const shouldFetchSuggestions = ({ value }) => value.length > 3
 		return (
 
 				<Form onSubmit={this.onSubmit} loading={loading}>
@@ -147,14 +167,12 @@ class ServiceForm extends Component {
 
 					<Form.Field error={!!errors.address}>
 						<label htmlFor="address">Address</label>
-						<input
-							name="address"
-							type="text"
-							placeholder="Enter your address, street, suburb"
-							value={data.address}
-							onChange={this.handleStringChange}
-						/>
-
+						<PlacesAutocomplete
+						inputProps={addressInputProps}
+						options={addressOptions}
+						styles={{autocompleteContainer: { zIndex:1 }}}
+						shouldFetchSuggestions={shouldFetchSuggestions}
+		        />
 						{errors.address && <InlineError text={errors.address} />}
 					</Form.Field>
 					<Form.Group widths="equal">
@@ -210,7 +228,7 @@ class ServiceForm extends Component {
 					<Form.Field error={!!errors.message}>
 						<label htmlFor="message">Message</label>
 						<textarea
-							rows={2}
+							rows={3}
 							name="message"
 							type="text"
 							placeholder="Enter your message"

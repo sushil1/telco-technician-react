@@ -14,7 +14,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 const HomePage = () => (
 	<Grid
 		stretched
-
 		style={{
 			paddingLeft: '20px',
 			paddingRight: '20px',

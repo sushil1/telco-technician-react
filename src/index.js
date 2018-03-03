@@ -12,7 +12,7 @@ import { currentUserFetched, fetchCurrentUser } from './actions/users';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './rootReducer';
-
+import './index.css'
 
 
 const store = createStore(

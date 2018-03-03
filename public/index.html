@@ -2,75 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no">
     <meta name="theme-color" content="#000000">
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <style>
-
-    #root{
-      background-color;#d3d3d3
-    }
-
-    .react-datepicker-wrapper{
-      width:100%;
-    }
-    .react-datepicker__input-container{
-      width:100%
-    }
-    .react-datepicker__day--today{
-      background-color: #107f7f !important;
-    }
-    .react-datepicker__day--selected{
-      background-color: #107f7f !important;
-    }
-    .react-datepicker__header--time{
-      padding-bottom: 28px !important;
-    }
-    .react-datepicker__time-list{
-      padding-left:0;
-      width:100px !important;
-    }
-    .react-datepicker__time-list-item{
-      margin-left:1px;
-      width:100%;
-      overflow-x:visible;
-    }
-    .react-datepicker__time-list-item--selected{
-      background-color: #107f7f !important;
-    }
-
-
-
-
-
-    .control-arrow{
-      padding-left:20px !important;
-      padding-right:20px !important;
-
-    }
-    .telcoHeading-appear {
-      opacity: 0.01;
-    }
-
-    .telcoHeading-appear.telcoHeading-appear-active {
-        opacity: 1;
-        transition: opacity 1s ease-in;
-      }
-    .sidebarIcon-appear {
-      opacity: 0.01;
-    }
-
-    .sidebarIcon-appear.sidebarIcon-appear-active {
-        opacity: 1;
-        transition: opacity 2s ease-in;
-      }
-
-    </style>
+  <!--
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"> -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -81,6 +21,7 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>TelcoTechnician</title>
+
 
 
   </head>
@@ -99,5 +40,9 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script>function initMap() { console.log('lib loaded') }</script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr4bg0B3SN0IjOtHwkqjx5IzJrcpHnvDs&libraries=places&**callback=initMap**" async defer></script>
   </body>
 </html>
