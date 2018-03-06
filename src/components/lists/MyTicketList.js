@@ -83,7 +83,7 @@ class MyTicketList extends React.Component {
 
   render() {
     const tickets = Object.values(this.state.data);
-    const { loading, activeIndex, popOverloading } = this.state;
+    const { activeIndex, popOverloading } = this.state;
 
     return (
       <div>

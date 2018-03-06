@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { UserRoute, GuestRoute } from './components/routes';
-import { Grid, Button } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from './actions/users';
 import { fetchAll } from './actions/services';
@@ -25,7 +25,8 @@ import {
 import {
   TopNavigation,
   Footer,
-  SidebarNavigation
+  SidebarNavigation,
+  ScrollTop
 } from './components/navigation';
 
 class App extends React.Component {
@@ -36,30 +37,16 @@ class App extends React.Component {
     }
   }
 
+
+
   render() {
     const { location, isAuthenticated, loaded, serviceOptions } = this.props;
 
     return (
-      <div>
+      <div onScroll={()=> this.handleScrollEvent}>
         <Loader loaded={loaded}>
-          <Button
-            inverted
-            circular
-            link="true"
-            icon="arrow circle up"
-            compact
-            color="green"
-            as="icon"
-            onClick={() => window.scrollTo(0, 0)}
-            style={{
-              position: 'fixed',
-              bottom: '20px',
-              right: '20px',
-              zIndex: '1',
-              opacity: '0.5',
-              margin: 'auto'
-            }}
-          />
+        <ScrollTop />
+
           <div style={{ minHeight: '100vh' }}>
             <Grid>
               <Grid.Row only="tablet" style={{ paddingBottom: '0' }}>
